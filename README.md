@@ -16,7 +16,7 @@ Esperamos que este programa torne a experiência de jogar "Forbidden Lands" mais
 
 O RPG Character Generator é uma ferramenta poderosa projetada para simplificar a criação de fichas de personagem no sistema "Forbidden Lands". Este software foi desenvolvido com o intuito de facilitar o processo de início do jogo, economizando tempo e esforço.
 
-### Principais Recursos
+### Descrição das etapas envolvidas na criação deste programa.
 
 - **Definição de Classes, Raças e Skills:** O programa, de forma aleatória, escolhe as classes, raças e habilidades do seu personagem, assegurando um equilíbrio conforme especificado pelas regras e diretrizes do sistema de RPG.
 
