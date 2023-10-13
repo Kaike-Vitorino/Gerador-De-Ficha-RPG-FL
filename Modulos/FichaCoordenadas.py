@@ -4,28 +4,45 @@ from util import *
 coordenadas_pag1 = {
     "raca_cord": (210, 195),
     "classe_cord": (1560, 195),
-    #===== Atributos =====
+    #===== Atributos =====#
     "Força_cord": (275, 515),
     "Agilidade_cord": (275, 615),
     "Inteligência_cord": (275, 715),
     "Empatia_cord": (275, 815),
-    #====== Talento =======
-    "talento_cord": (1375, 1140),
-    "nivel_talento_cord": (1830, 1140),
-    #======================
+    #====== Talento =======#
+    "talento_cord": (1370, 1140),
+    "nivel_talento_cord": (1840, 1140),
+    #====== Talento =======#
+    "Potencia_cord": (543, 1632),
+    "Resiliência_cord": (543, 1702),
+    "Luta_cord": (543, 1772),
+    "Artesanato_cord": (543, 1842),
+    "Furtividade_cord": (543, 1912),
+    "Artimanha_cord": (543, 1982),
+    "Movimentação_cord": (543, 2052),
+    "Pontaria_cord": (543, 2122),
+    "Patrulha_cord": (543, 2192),
+    "Tradição_cord": (543, 2262),
+    "Sobrevivência_cord": (543, 2332),
+    "Discernimento_cord": (543, 2402),
+    "Manipulação_cord": (543, 2472),
+    "Atuação_cord": (543, 2542),
+    "Cura_cord": (543, 2612),
+    "Adestramento_cord": (543, 2682),
+    #======================#
     "idade_cord": (810, 996),
     "faixa_etaria_cord": (810, 1045),
-    "equipamentos_cord": (322, 332),
     "arma_escolhida_cord": (700, 2120),
     "info_armas_cord": (1200, 2120),
-    #======================
+    #======================#
 }
 
 #variavel com as coordenadas simples da pagina 2
 coordenadas_pag2 = {
     "Dx_comida": (322, 392),
     "Dx_agua": (322, 412),
-    "prata_rolada": (322, 432)
+    "prata_rolada": (322, 432),
+    "equipamentos_cord": (322, 332),
 }
 
 mapa_chaves = {
@@ -41,5 +58,21 @@ mapa_chaves = {
     "faixa_etaria_cord": "faixa_etaria",
     "equipamentos_cord": "equipamentos",
     "arma_escolhida_cord": "arma_escolhida",
-    "info_armas_cord": "info_armas"
+    "info_armas_cord": "info_armas",
+    "Potencia_cord": "pericias_distribuidas",
+    "Resiliência_cord": "pericias_distribuidas",
+    "Luta_cord": "pericias_distribuidas",
+    "Artesanato_cord": "pericias_distribuidas",
+    "Furtividade_cord": "pericias_distribuidas",
+    "Artimanha_cord": "pericias_distribuidas",
+    "Movimentação_cord": "pericias_distribuidas",
+    "Pontaria_cord": "pericias_distribuidas",
+    "Patrulha_cord": "pericias_distribuidas",
+    "Tradição_cord": "pericias_distribuidas",
+    "Sobrevivência_cord": "pericias_distribuidas",
+    "Discernimento_cord": "pericias_distribuidas",
+    "Manipulação_cord": "pericias_distribuidas",
+    "Atuação_cord": "pericias_distribuidas",
+    "Cura_cord": "pericias_distribuidas",
+    "Adestramento_cord": "pericias_distribuidas",
 }

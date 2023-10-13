@@ -1,6 +1,4 @@
 from util import *
-from personagem import *
-
 
 # Gerar raca aleatoria
 raca, raca_info = gerar_raca()
@@ -8,7 +6,6 @@ raca, raca_info = gerar_raca()
 
 # Gerar classe aleatoria
 classe = gerar_classe(raca,racas_info,classes)
-#print(f"Classe: {classe}")
 
 # Funcao para obter atributos chave
 atributos_chave = obter_atributos_chave(classe, raca, raca_info)
@@ -43,17 +40,3 @@ else:
 gerar_info_ficha(classe, raca, atributos_chave, idade, faixa_etaria, atributos_randomizados, talentos_escolhidos, pericias_distribuidas)
 
 #===============================================================================
-
-# Criando variavel das infos da arma, Dx Comida e Dx Água
-info_armas = lista_armas_FINAL.get(arma_escolhida)
-Dx_comida = classe_info[classe]['dados_recurso']['Comida']
-Dx_agua = classe_info[classe]['dados_recurso']['Água']
-
-prata_rolada = rolar_dados_prata(classe_info[classe]["dados_recurso"]["Prata"])
-print(f"prata: {prata_rolada}")
-
-Teste1 = Personagem(raca, classe, atributos_randomizados, idade, faixa_etaria, talentos_escolhidos,
-                       pericias_distribuidas, equipamentos, arma_escolhida, info_armas, Dx_comida, Dx_agua, prata_rolada)
-
-# Imprimindo o objeto Personagem
-print(Teste1)

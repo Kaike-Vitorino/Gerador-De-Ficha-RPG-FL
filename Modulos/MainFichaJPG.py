@@ -69,6 +69,13 @@ vars = {
     "Dx_agua": Dx_agua
 }
 
+# Adiocionado todas as pericias que faltaram, para que sejam impressas nivel 0
+pericias_faltando = {pericia: 0 for pericia in pericias.keys() if pericia not in pericias_distribuidas}
+pericias_distribuidas.update(pericias_faltando)
+pericias_distribuidas = {k.lower(): v for k, v in pericias_distribuidas.items()}
+print(pericias_distribuidas)
+
+#=============================================================================================================================================
 # Carrega a imagem da ficha
 imagem_entrada = 'Pagina1.jpg'
 imagem_saida = 'Pagina1_preenchida.jpg'
@@ -76,6 +83,7 @@ imagem = Image.open(imagem_entrada)
 
 # Adicione todas as variáveis à ficha usando as coordenadas
 for variavel, cord in coordenadas_pag1.items():
+
     if variavel == "nivel_talento_cord" or variavel == "talento_cord":
         espacamento = 70  # Defina o valor do espaçamento aqui
         for i, (talento, nivel) in enumerate(talentos_escolhidos.items()):
@@ -83,34 +91,29 @@ for variavel, cord in coordenadas_pag1.items():
                 adicionar_texto_na_ficha(imagem, f"{talento}", cord, espacamento * i)
             elif variavel == "nivel_talento_cord":
                 nivel_valor = nivel['Nivel']
-
                 adicionar_texto_na_ficha(imagem, f"{nivel_valor}", cord, espacamento * i)
+
     elif variavel in ["Força_cord", "Agilidade_cord", "Inteligência_cord", "Empatia_cord"]:
-        print(type(atributos_randomizados), atributos_randomizados)
-        print(f"variavel: {variavel}")  # Adicione esta linha
         # Obtenha o valor do atributo a partir do seu nome
         valor_atributo = atributos_randomizados[variavel.split('_')[0]]
         adicionar_texto_na_ficha(imagem, str(valor_atributo), cord)
 
-
-    elif variavel == "info_armas_cord":
-        # Obtém as informações da arma em formato '+1 1'
-        info_armas_formatado = f"{info_armas['Bonus']} {info_armas['Dano']}"
-        # Divide o texto em duas partes
-        bonus, dano = info_armas_formatado.split()
-        # Defina um espaçamento personalizado
-        espacamento = 130
-        # Adicione o texto à imagem com o espaçamento personalizado
-        adicionar_texto_na_ficha(imagem, bonus, cord, 0)
-        adicionar_texto_na_ficha(imagem, dano, (cord[0] + espacamento, cord[1]), 0)
-
+    elif variavel in ["Potencia_cord", "Resiliência_cord", "Luta_cord", "Artesanato_cord", "Furtividade_cord",
+                  "Artimanha_cord", "Movimentação_cord", "Pontaria_cord", "Patrulha_cord", "Tradição_cord",
+                  "Sobrevivência_cord", "Discernimento_cord", "Manipulação_cord", "Atuação_cord", "Cura_cord",
+                  "Adestramento_cord"]:
+        chave_pericia = variavel.replace("_cord", "").lower()  # Remova o sufixo _cord e converta para minúsculas
+        valor_pericia = pericias_distribuidas.get(chave_pericia, 1)
+        adicionar_texto_na_ficha(imagem, str(valor_pericia), cord)
 
     else:
         # Obtenha a chave correspondente em vars
         chave_vars = mapa_chaves[variavel]
         # Obtenha o valor da variável a partir do seu nome
         valor = vars[chave_vars]
-        adicionar_texto_na_ficha(imagem, str(valor), cord)
+        # Verifique se o valor é uma lista ou um dicionário
+        if not isinstance(valor, (list, dict)):
+            adicionar_texto_na_ficha(imagem, str(valor), cord)
 
 # Salve a imagem com o texto adicionado
 imagem.save(imagem_saida)
@@ -120,3 +123,4 @@ webbrowser.open(imagem_saida)
 
 # Feche a imagem
 imagem.close()
+#=============================================================================================================================================

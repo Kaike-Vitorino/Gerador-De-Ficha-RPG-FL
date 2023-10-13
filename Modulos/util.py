@@ -315,6 +315,16 @@ def dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias):
         print("Digite um número inteiro válido.")
         return dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias)
 
+    #Declarando lista de pericias e talentos para o while que vai acontecer
+    pericias_disponiveis = list(pericias.keys())
+    talentos_disponiveis = list(talentos_gerais[classe])
+
+    # Variáveis para controlar se todas as opções estão no máximo
+    todas_pericias_maximo = False
+    todos_talentos_maximo = False
+    pericias_disponiveis_para_aumentar = False
+    talentos_disponiveis_para_aumentar = False
+
     while pontos_xp > 0:
         opcoes = [
             "Perícia nova",
@@ -327,22 +337,24 @@ def dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias):
 
         if escolha == "Perícia nova":
             custo = 5
-            nova_pericia = random.choice(list(pericias.keys()))
+            if not pericias_disponiveis:
+                print("Todas as perícias estão distribuídas. Escolhendo novamente.")
+                todas_pericias_maximo = True
+                continue  # Pule esta iteração do loop
+            nova_pericia = random.choice(pericias_disponiveis)
 
-            while nova_pericia in pericias_distribuidas:
-                print("Perícia já distribuída. Escolhendo novamente.")
-                nova_pericia = random.choice(list(pericias.keys()))
-
+            pericias_disponiveis.remove(nova_pericia)
             pericias_distribuidas[nova_pericia] = 1
 
         elif escolha == "Talento novo":
             custo = 3
-            novo_talento = random.choice(talentos_gerais[classe])
+            if not talentos_disponiveis:
+                print("Todos os talentos disponíveis já foram escolhidos. Escolhendo novamente.")
+                todos_talentos_maximo = True
+                continue  # Pule esta iteração do loop
+            novo_talento = random.choice(talentos_disponiveis)
 
-            while novo_talento in talentos_escolhidos:
-                print("Talento já escolhido. Escolhendo novamente.")
-                novo_talento = random.choice(talentos_gerais[classe])
-
+            talentos_disponiveis.remove(novo_talento)
             talentos_escolhidos[novo_talento] = {"Nivel": 1}
 
         elif escolha == "Aumentar nivel de perícia":
@@ -351,6 +363,7 @@ def dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias):
 
             if not pericias_disponiveis_para_aumentar:
                 print("Todas as perícias estão no nível máximo. Escolhendo novamente.")
+                talentos_disponiveis_para_aumentar = True
                 continue  # Pula esta iteração do loop
 
             pericia_aumentar = random.choice(pericias_disponiveis_para_aumentar)
@@ -365,6 +378,7 @@ def dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias):
 
             if not talentos_disponiveis_para_aumentar:
                 print("Todos os talentos estão no nível máximo. Escolhendo novamente.")
+                pericias_disponiveis_para_aumentar = True
                 continue  # Pula esta iteração do loop
 
             talento_aumentar = random.choice(talentos_disponiveis_para_aumentar)
@@ -374,7 +388,12 @@ def dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias):
 
         pontos_xp -= custo
 
+        if todas_pericias_maximo and todos_talentos_maximo and pericias_disponiveis_para_aumentar and talentos_disponiveis_para_aumentar:
+            print("Sua ficha está no nível máximo, não é necessário mais XP")
+            break
+
     return talentos_escolhidos, pericias_distribuidas
+
 
 # Funcao para gerar informacoes da ficha
 def gerar_info_ficha(classe, raca, atributos_chave, idade, faixa_etaria, atributos_randomizados, talentos_escolhidos, pericias_distribuidas):
