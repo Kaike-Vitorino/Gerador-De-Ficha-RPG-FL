@@ -261,13 +261,13 @@ def gerar_arma(classe):
     # Verificar se a classe tem armas disponíveis
     if armas_disponiveis:
         if classe == "Rider":
-            armas_escolhidas = random.sample(armas_disponiveis, 2)
+            arma_escolhida = random.sample(armas_disponiveis, 2)
 
-            while ["Lança", "Machadinha"] in armas_escolhidas or ["Arco Curto", "Funda"] in armas_escolhidas:
-                armas_escolhidas = random.sample(armas_disponiveis, 2)
+            while ["Lança", "Machadinha"] in arma_escolhida or ["Arco Curto", "Funda"] in arma_escolhida:
+                arma_escolhida = random.sample(armas_disponiveis, 2)
 
             # Se chegou aqui, então as armas escolhidas são válidas
-            equipamentos.extend(armas_escolhidas)
+            equipamentos.extend(arma_escolhida)
 
         elif classe == "Bardo":
             arma_escolhida = classe_info[classe]["equipamentos"]["Arma"][0]  # Pega o primeiro item da lista
@@ -416,8 +416,10 @@ def gerar_info_ficha(classe, raca, atributos_chave, idade, faixa_etaria, atribut
 
     print(f"itens_randomizados: {itens_randomizados,}")
 
-    # Criando variavel das infos da arma, Dx Comida e Dx Água
-    info_armas = lista_armas_FINAL.get(arma_escolhida)
+    # Criando variaveis Necessarias
+    cavalo = classe_info[classe]["equipamentos"]["Cavalo"]
+    armadura_disponivel = classe_info[classe]["equipamentos"]["Armadura"]
+    info_armaduras = lista_armaduras.get("armadura_disponivel")
     Dx_comida = classe_info[classe]['dados_recurso']['Comida']
     Dx_agua = classe_info[classe]['dados_recurso']['Água']
 
@@ -439,12 +441,39 @@ def gerar_info_ficha(classe, raca, atributos_chave, idade, faixa_etaria, atribut
     print(f"Perícias: {pericias_distribuidas}")
     print(f"=============================")
     print(f"Equipamentos: {', '.join(equipamentos)}")
-    print(f"Sua arma:", arma_escolhida)
-    print(f"Infos da sua arma:", info_armas)
+    # Dividindo a variavel arma escolhida em dois ja que o Rider tem duas armas
+    if classe == "Rider":
+        arma_escolhida_1, arma_escolhida_2 = arma_escolhida  # Separando a variavel em 2
+
+        info_arma_1 = lista_armas_FINAL.get(arma_escolhida_1)  # Criando as infos de cada
+        info_arma_2 = lista_armas_FINAL.get(arma_escolhida_2)  # Criando as infos de cada
+
+        print(f"Sua 1º arma:", arma_escolhida_1)
+        print(f"Infos da sua 1º arma:", info_arma_1)
+        print(f"Sua 2º arma: ", arma_escolhida_2)
+        print(f"Infos da sua 2º arma:", info_arma_2)
+
+    else:
+        info_armas = lista_armas_FINAL.get(arma_escolhida)
+        print(f"Sua arma:", arma_escolhida)
+        print(f"Infos da sua arma:", info_armas)
+
+    if armadura_disponivel != None:
+        print(f"Sua armadura: {armadura_disponivel}")
+        print(f"Infos da armadura: {info_armaduras}")
+
+    if cavalo != None:
+        print("Voce tem um cavalo")
+        print("Essas sao as infos da sua montaria: ")
+        #Forca: 5 Agilidade: 4 |Pericias: Movimentacao: +2 Patrulha: +3 |Dano: 1
+
+    if artefato_musical_escolhido != None:
+        print(f"Seu instrumento: ", artefato_musical_escolhido)
     print(f"Comida: {Dx_comida}")
     print(f"Água: {Dx_agua}")
+
     if "Arco Curto" in equipamentos or "Arco Longo" in equipamentos:
         print("Flecha: D10")
+
     print(f"Prata: {prata_rolada}")
     print("--------------------------\n")
-    return info_armas, Dx_comida, Dx_agua

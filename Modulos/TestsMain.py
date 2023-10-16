@@ -2,19 +2,25 @@ from util import *
 
 # Gerar raca aleatoria
 raca, raca_info = gerar_raca()
-#print(f"Raca escolhida: {raca}")
+print(f"Raca escolhida: {raca}")
 
 # Gerar classe aleatoria
 classe = gerar_classe(raca,racas_info,classes)
+print(f"Classe escolhida: {classe}")
+
 
 # Funcao para obter atributos chave
 atributos_chave = obter_atributos_chave(classe, raca, raca_info)
+print(atributos_chave)
 
 # Gerar idade
 idade, faixa_etaria = calcular_idade(raca)
+print(idade)
+print(faixa_etaria)
 
 # Gerar atributos
 atributos_randomizados = escolher_atributos(faixa_etaria, atributos_chave)
+print(atributos_randomizados)
 
 # Gerar pontos de pericias
 pericias_distribuidas = distribuir_pontos_pericia(faixa_etaria, classe)

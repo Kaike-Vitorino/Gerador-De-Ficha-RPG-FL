@@ -11,7 +11,10 @@ classe_info = {
         "pericias": ["Furtividade", "Movimentação", "Pontaria", "Patrulha", "Sobrevivência"],
         "equipamentos": {
             "Arma": ["Arco", "Funda"],
+            "Armadura": None,
             "Itens": 2,
+            "Artefato Musical": None,
+            "Cavalo": 0
         },
         "dados_recurso": {"Comida": "D8", "Água": "D8", "Flechas": "D10", "Prata": "D6"}
     },
@@ -20,7 +23,10 @@ classe_info = {
         "pericias": ["Resiliência", "Sobrevivência", "Discernimento", "Cura", "Adestramento"],
         "equipamentos": {
             "Arma": ["Bastão", "Faca"],
+            "Armadura": None,
             "Itens": 1,
+            "Artefato Musical": None,
+            "Cavalo": 0
         },
         "dados_recurso": {"Comida": "D8", "Água": "D8" , "Prata": "D6"}
     },
@@ -29,7 +35,10 @@ classe_info = {
         "pericias": ["Artesanato", "Artimanha", "Tradição", "Discernimento", "Manipulação"],
         "equipamentos": {
             "Arma": ["Bastão", "Faca"],
+            "Armadura": None,
             "Itens": 1,
+            "Artefato Musical": None,
+            "Cavalo": 0
         },
         "dados_recurso": {"Comida": "D6", "Água": "D8" , "Prata": "D8"}
     },
@@ -38,7 +47,9 @@ classe_info = {
         "pericias": ["Resiliência", "Luta", "Pontaria", "Sobrevivência", "Adestramento"],
         "equipamentos": {
             "Arma": ["Lança", "Machadinha","Arco Curto", "Funda"],
+            "Armadura": None,
             "Itens": 1,
+            "Artefato Musical": None,
             "Cavalo": 1
         },
         "dados_recurso": {"Comida": "D8", "Água": "D8", "Flechas": "D10", "Prata": "D6"}
@@ -48,7 +59,10 @@ classe_info = {
         "pericias": ["Potência", "Resiliência", "Luta", "Movimentação"],
         "equipamentos": {
             "Arma": armas_1m,
+            "Armadura": "Couro",
             "Itens": 1,
+            "Artefato Musical": None,
+            "Cavalo": 0
         },
         "dados_recurso": {"Comida": "D8", "Água": "D6", "Prata": "D6"}
     },
@@ -57,7 +71,10 @@ classe_info = {
         "pericias": ["Luta", "Furtividade", "Artimanha", "Movimentação", "Manipulação"],
         "equipamentos": {
             "Arma": ["Adaga"],
+            "Armadura": None,
             "Itens": 2,
+            "Artefato Musical": None,
+            "Cavalo": 0
         },
         "dados_recurso": {"Comida": "D6", "Água": "D6", "Prata": "D10"}
     },
@@ -66,7 +83,10 @@ classe_info = {
         "pericias": ["Artesanato", "Artimanha", "Patrulha", "Discernimento", "Manipulação"],
         "equipamentos": {
             "Arma": ["Faca"],
+            "Armadura": None,
             "Itens": 3,
+            "Artefato Musical": None,
+            "Cavalo": 0
         },
         "dados_recurso": {"Comida": "D8", "Água": "D8", "Prata": "D12"}
     },
@@ -75,8 +95,10 @@ classe_info = {
         "pericias": ["Tradição", "Discernimento", "Manipulação", "Atuação", "Cura"],
         "equipamentos": {
             "Arma": ["Faca"],
+            "Armadura": None,
             "Itens": 1,
-            "Artefato Musical": ["Lança", "Machadinha"],
+            "Artefato Musical": ["Lira", "flauta"],
+            "Cavalo": 0
         },
         "dados_recurso": {"Comida": "D8", "Água": "D6", "Prata": "D8"}
     }
