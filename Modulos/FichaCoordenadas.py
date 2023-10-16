@@ -10,8 +10,8 @@ coordenadas_pag1 = {
     "Inteligência_cord": (275, 715),
     "Empatia_cord": (275, 815),
     #====== Talento =======#
-    "talento_cord": (1370, 1140),
-    "nivel_talento_cord": (1840, 1140),
+    "talento_cord": (1342, 1139),
+    "nivel_talento_cord": (1860, 1139),
     #====== Talento =======#
     "Potencia_cord": (543, 1632),
     "Resiliência_cord": (543, 1702),
@@ -36,6 +36,9 @@ coordenadas_pag1 = {
     "info_armas_cord": (1200, 2120),
     #======================#
 }
+
+coordenadas_pag1_User = [(770, 440), (770, 630), (770, 830), (1410, 530), (1410, 680), (1410, 820)]
+coordenadas_pag1_Mestre = [(1000, 1030)]
 
 #variavel com as coordenadas simples da pagina 2
 coordenadas_pag2 = {
