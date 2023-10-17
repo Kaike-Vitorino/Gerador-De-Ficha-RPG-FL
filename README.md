@@ -27,3 +27,7 @@ O RPG Character Generator é uma ferramenta poderosa projetada para simplificar 
 - **Confecção da Ficha de Fato:** Com a ficha pronta, o programa preenche todos os campos correspondentes e a disponibiliza para visualização imediata e, se desejado, para salvar.
 
 - **Interface do Usuário Intuitiva:** Desfrute de uma interface de usuário simples e intuitiva, projetada para oferecer uma experiência agradável e descomplicada.
+
+## Licença
+
+Este projeto está sob a Licença Pública Geral GNU Versão 3 - veja o arquivo [LICENSE](LICENSE) para detalhes.
