@@ -30,4 +30,4 @@ O RPG Character Generator é uma ferramenta poderosa projetada para simplificar 
 
 ## Licença
 
-Este projeto está sob a Licença Pública Geral GNU Versão 3 - veja o arquivo [LICENSE](LICENSE) para detalhes.
+Este projeto está sob a Licença Pública Geral GNU Versão 3 - veja o arquivo [LICENSE.md](LICENSE) para detalhes.
