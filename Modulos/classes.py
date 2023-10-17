@@ -46,7 +46,7 @@ classe_info = {
         "atributo_chave": "Agilidade",
         "pericias": ["Resiliência", "Luta", "Pontaria", "Sobrevivência", "Adestramento"],
         "equipamentos": {
-            "Arma": ["Lança", "Machadinha","Arco Curto", "Funda"],
+            "Arma": ["Lança Curta", "Machadinha","Arco Curto", "Funda"],
             "Armadura": None,
             "Itens": 1,
             "Artefato Musical": None,

@@ -257,19 +257,24 @@ def gerar_arma(classe):
     global artefato_musical_escolhido, arma_escolhida
     armas_disponiveis = classe_info[classe]["equipamentos"]["Arma"]
     arma_escolhida = None
+    armas_escolhidas = None
 
     # Verificar se a classe tem armas disponíveis
     if armas_disponiveis:
         if classe == "Rider":
-            arma_escolhida = random.sample(armas_disponiveis, 2)
+            armas_escolhidas = random.sample(armas_disponiveis, 2)
+            arma_escolhida = None
 
-            while ["Lança", "Machadinha"] in arma_escolhida or ["Arco Curto", "Funda"] in arma_escolhida:
-                arma_escolhida = random.sample(armas_disponiveis, 2)
+            while ["Lança", "Machadinha"] in armas_escolhidas or ["Arco Curto", "Funda"] in armas_escolhidas:
+                armas_escolhidas = random.sample(armas_disponiveis, 2)
+
+            
 
             # Se chegou aqui, então as armas escolhidas são válidas
-            equipamentos.extend(arma_escolhida)
+            equipamentos.extend(armas_escolhidas)
 
         elif classe == "Bardo":
+            armas_escolhidas = None
             arma_escolhida = classe_info[classe]["equipamentos"]["Arma"][0]  # Pega o primeiro item da lista
             artefato_musical_disponiveis = classe_info[classe]["equipamentos"]["Artefato Musical"]
             artefato_musical_escolhido = random.choice(artefato_musical_disponiveis)
@@ -278,14 +283,19 @@ def gerar_arma(classe):
             equipamentos.insert(1, artefato_musical_escolhido)
 
         elif classe == "Guerreiro":
+            armas_escolhidas = None
             arma_escolhida = random.choice(armas_1m_lista)
             equipamentos.append(arma_escolhida)
 
         else:
+            armas_escolhidas = None
             arma_escolhida = random.choice(armas_disponiveis)
             equipamentos.append(arma_escolhida)
 
-        print(f"Arma escolhida 1 etapa: {arma_escolhida}")
+        if arma_escolhida!= None:
+            print(f"Arma escolhida 1 etapa: {arma_escolhida}")
+        else:
+            print(f"Armas escolhidas 1 etapa: {armas_escolhidas}")
 
         if arma_escolhida in ["Arco"]:
             arma_escolhida = random.choice(["Arco Curto", "Arco Longo"])
@@ -298,11 +308,15 @@ def gerar_arma(classe):
             equipamentos.remove("Lança")
             equipamentos.append(arma_escolhida)
 
-        print(f"Arma escolhida 2 etapa: {arma_escolhida}")
+        if arma_escolhida != None:
+            print(f"Arma escolhida 2 etapa: {arma_escolhida}")
+        else:
+            print(f"Armas escolhidas 2 etapa: {armas_escolhidas}")
+
         if "artefato_musical" in equipamentos:
             print(f"Artefato musical escolhido: {artefato_musical_escolhido}")
 
-    return arma_escolhida
+    return arma_escolhida, armas_escolhidas
 
 # Inicialize um dicionario vazio para mapear os talentos e os niveis deles
 talentos_e_niveis = {}
@@ -318,6 +332,8 @@ def dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias):
     #Declarando lista de pericias e talentos para o while que vai acontecer
     pericias_disponiveis = list(pericias.keys())
     talentos_disponiveis = list(talentos_gerais[classe])
+
+    
 
     # Variáveis para controlar se todas as opções estão no máximo
     todas_pericias_maximo = False
@@ -396,7 +412,7 @@ def dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias):
 
 
 # Funcao para gerar informacoes da ficha
-def gerar_info_ficha(classe, raca, atributos_chave, idade, faixa_etaria, atributos_randomizados, talentos_escolhidos, pericias_distribuidas):
+def gerar_info_ficha(classe, raca, atributos_chave, idade, faixa_etaria, atributos_randomizados, talentos_escolhidos, pericias_distribuidas, armas_escolhidas):
 
     # Rolando quantidade de prata
     prata_rolada = rolar_dados_prata(classe_info[classe]["dados_recurso"]["Prata"])
@@ -410,10 +426,17 @@ def gerar_info_ficha(classe, raca, atributos_chave, idade, faixa_etaria, atribut
         # Vai ser randomizado todos os itens, inclusive as duas flechas que são os 2 itens iniciais da lista de comercio
         itens_randomizados = random.sample(itens_comercio, quantidade_itens)  # Randomiza eles
         equipamentos.extend(itens_randomizados)  # adiciona eles nos equipamentos
+
+    elif armas_escolhidas in ["Arco Curto", "Arco Longo"]:
+        # Vai ser randomizado todos os itens, inclusive as duas flechas que são os 2 itens iniciais da lista de comercio
+        itens_randomizados = random.sample(itens_comercio, quantidade_itens)  # Randomiza eles
+        equipamentos.extend(itens_randomizados)  # adiciona eles nos equipamentos
+
     else:
         itens_randomizados = random.sample(itens_comercio[2:], quantidade_itens)  # Randomiza eles só que como não tem o arco, ele não considera os 2 itens de flechas
         equipamentos.extend(itens_randomizados)  # adiciona eles nos equipamentos
 
+    
     print(f"itens_randomizados: {itens_randomizados,}")
 
     # Criando variaveis Necessarias
@@ -422,6 +445,8 @@ def gerar_info_ficha(classe, raca, atributos_chave, idade, faixa_etaria, atribut
     info_armaduras = lista_armaduras.get("armadura_disponivel")
     Dx_comida = classe_info[classe]['dados_recurso']['Comida']
     Dx_agua = classe_info[classe]['dados_recurso']['Água']
+    armas_escolhidas_1 = None
+    armas_escolhidas_2 = None
 
     # Printando a ficha do personagem
     print("\n--- Ficha do personagem ---")
@@ -443,14 +468,14 @@ def gerar_info_ficha(classe, raca, atributos_chave, idade, faixa_etaria, atribut
     print(f"Equipamentos: {', '.join(equipamentos)}")
     # Dividindo a variavel arma escolhida em dois ja que o Rider tem duas armas
     if classe == "Rider":
-        arma_escolhida_1, arma_escolhida_2 = arma_escolhida  # Separando a variavel em 2
+        armas_escolhidas_1, armas_escolhidas_2 = armas_escolhidas  # Separando a variavel em 2
 
-        info_arma_1 = lista_armas_FINAL.get(arma_escolhida_1)  # Criando as infos de cada
-        info_arma_2 = lista_armas_FINAL.get(arma_escolhida_2)  # Criando as infos de cada
+        info_arma_1 = lista_armas_FINAL.get(armas_escolhidas_1)  # Criando as infos de cada
+        info_arma_2 = lista_armas_FINAL.get(armas_escolhidas_2)  # Criando as infos de cada
 
-        print(f"Sua 1º arma:", arma_escolhida_1)
+        print(f"Sua 1º arma:", armas_escolhidas_1)
         print(f"Infos da sua 1º arma:", info_arma_1)
-        print(f"Sua 2º arma: ", arma_escolhida_2)
+        print(f"Sua 2º arma: ", armas_escolhidas_2)
         print(f"Infos da sua 2º arma:", info_arma_2)
 
     else:
@@ -477,3 +502,6 @@ def gerar_info_ficha(classe, raca, atributos_chave, idade, faixa_etaria, atribut
 
     print(f"Prata: {prata_rolada}")
     print("--------------------------\n")
+
+    if classe == "Rider":
+        return armas_escolhidas_1, armas_escolhidas_2, info_arma_1, info_arma_2

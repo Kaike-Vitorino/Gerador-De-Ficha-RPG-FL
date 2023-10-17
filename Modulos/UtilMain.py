@@ -11,7 +11,8 @@ def Ficha_Random():
     print(f"Raca escolhida: {raca}")
 
     # Gerar classe aleatoria
-    classe = gerar_classe(raca,racas_info,classes)
+    #classe = gerar_classe(raca,racas_info,classes)
+    classe = "Guerreiro"
     print(f"Classe: {classe}")
 
     # Funcao para obter atributos chave
@@ -27,9 +28,16 @@ def Ficha_Random():
     pericias_distribuidas = distribuir_pontos_pericia(faixa_etaria, classe)
     print(f"Pericias distribuidas: {pericias_distribuidas}")
 
-    # Gerar arma
-    arma_escolhida = gerar_arma(classe)
-    print(f"arma_escolhida_final: {arma_escolhida}")
+    #Gerar armas
+    arma_escolhida, armas_escolhidas = gerar_arma(classe)
+
+    '''
+    if classe == "Rider":
+        armas_escolhidas = gerar_arma(classe)
+        print(f"arma_escolhida_final: {armas_escolhidas}")
+    else:
+        arma_escolhida = gerar_arma(classe)
+        print(f"arma_escolhida_final: {arma_escolhida}")'''
 
     # Gerar talentos
     talentos_escolhidos = escolher_talentos(classe, raca, faixa_etaria)
@@ -44,14 +52,31 @@ def Ficha_Random():
     else:
         pass
 
+    info_armas = None
+    info_armas_formatado = None
+    if classe != "Rider":
+        info_armas = lista_armas_FINAL.get(arma_escolhida)
+        info_armas_formatado = f"{info_armas['Bonus']} {info_armas['Dano']}"
+    
+
     prata_rolada = rolar_dados_prata(classe_info[classe]["dados_recurso"]["Prata"])
-    info_armas = lista_armas_FINAL.get(arma_escolhida)
     Dx_comida = classe_info[classe]['dados_recurso']['Comida']
     Dx_agua = classe_info[classe]['dados_recurso']['Água']
-    info_armas_formatado = f"{info_armas['Bonus']} {info_armas['Dano']}"
 
-    # Gerar ficha
-    gerar_info_ficha(classe, raca, atributos_chave, idade, faixa_etaria, atributos_randomizados, talentos_escolhidos, pericias_distribuidas)
+
+    if classe == "Rider":
+        # Gerar ficha com return
+        arma_escolhida_1, arma_escolhida_2, info_arma_1, info_arma_2 = gerar_info_ficha(classe, raca, atributos_chave,
+                                                      idade, faixa_etaria, atributos_randomizados, talentos_escolhidos,
+                                                                                pericias_distribuidas, armas_escolhidas)
+        info_armas_formatado_1 = f"{info_arma_1['Bonus']} {info_arma_1['Dano']}"
+        info_armas_formatado_2 = f"{info_arma_2['Bonus']} {info_arma_2['Dano']}"
+        bonus_arma_1, dano_arma_1 = info_armas_formatado_1.split()
+        bonus_arma_2, dano_arma_2 = info_armas_formatado_2.split()
+
+    else:
+        gerar_info_ficha(classe, raca, atributos_chave,idade, faixa_etaria, atributos_randomizados,talentos_escolhidos,
+                         pericias_distribuidas, armas_escolhidas)
 
 #=============================================================================================================================================
 
@@ -77,7 +102,9 @@ def Ficha_Random():
     pericias_distribuidas = {k.lower(): v for k, v in pericias_distribuidas.items()}
     print(pericias_distribuidas)
 
-    bonus_arma, dano_arma = info_armas_formatado.split()
+    if classe != "Rider":
+        bonus_arma, dano_arma = info_armas_formatado.split()
+
 
 #=======================================================================================================================
 
@@ -117,9 +144,21 @@ def Ficha_Random():
             valor_formatado = f"+{valor_pericia}"
             adicionar_texto_na_ficha(imagem, valor_formatado, cord)
 
-        elif variavel == "info_armas_cord":
+        elif variavel == "info_armas_cord" and classe != "Rider":
             valor_formatado = f"{bonus_arma}      {dano_arma}"
             adicionar_texto_na_ficha(imagem, valor_formatado, cord)
+
+        elif variavel == "info_armas_cord" and classe == "Rider":
+            espacamento = 70
+            valor_formatado_1 = f"{bonus_arma_1}      {dano_arma_1}"
+            adicionar_texto_na_ficha(imagem, valor_formatado_1, cord)
+            valor_formatado_2 = f"{bonus_arma_2}      {dano_arma_2}"
+            adicionar_texto_na_ficha(imagem, valor_formatado_2, cord, espacamento)
+
+        elif variavel == "arma_escolhida_cord" and classe == "Rider":
+            espacamento = 70
+            adicionar_texto_na_ficha(imagem, arma_escolhida_1, cord)
+            adicionar_texto_na_ficha(imagem, arma_escolhida_2, cord, espacamento)
 
         else:
             # Obtenha a chave correspondente em vars
@@ -130,6 +169,12 @@ def Ficha_Random():
             if not isinstance(valor, (list, dict)):
                 adicionar_texto_na_ficha(imagem, str(valor), cord)
 
+    #Por a armadura do guerreiro na ficha
+    if classe == "Guerreiro":
+        Armadura_couro_str = ("Couro")
+        escrever_armadura(imagem, Armadura_couro_str, coordenadas_armadura)
+
+    #Por na ficha onde a escolha vai ser do jogador ou do mestre
     escolha_do_jogador = 'Escolha do JOGADOR'
     escolha_do_mestre = 'Escolha do MESTRE'
     escrever_texto_em_varias_coordenadas_JOGADOR(imagem, escolha_do_jogador, coordenadas_pag1_User)
@@ -143,9 +188,4 @@ def Ficha_Random():
 
     # Feche a imagem
     imagem.close()
-#=============================================================================================================================================
-
-
-
-
 #=============================================================================================================================================

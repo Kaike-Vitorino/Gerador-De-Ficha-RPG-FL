@@ -10,33 +10,34 @@ coordenadas_pag1 = {
     "Inteligência_cord": (275, 715),
     "Empatia_cord": (275, 815),
     #====== Talento =======#
-    "talento_cord": (1342, 1139),
-    "nivel_talento_cord": (1860, 1139),
-    #====== Talento =======#
-    "Potencia_cord": (543, 1632),
-    "Resiliência_cord": (543, 1702),
-    "Luta_cord": (543, 1772),
-    "Artesanato_cord": (543, 1842),
-    "Furtividade_cord": (543, 1912),
-    "Artimanha_cord": (543, 1982),
-    "Movimentação_cord": (543, 2052),
-    "Pontaria_cord": (543, 2122),
-    "Patrulha_cord": (543, 2192),
-    "Tradição_cord": (543, 2262),
-    "Sobrevivência_cord": (543, 2332),
-    "Discernimento_cord": (543, 2402),
-    "Manipulação_cord": (543, 2472),
-    "Atuação_cord": (543, 2542),
-    "Cura_cord": (543, 2612),
-    "Adestramento_cord": (543, 2682),
+    "talento_cord": (1342, 1135),
+    "nivel_talento_cord": (1860, 1135),
+    #====== Pericias =======#
+    "Potencia_cord": (535, 1632),
+    "Resiliência_cord": (535, 1702),
+    "Luta_cord": (535, 1772),
+    "Artesanato_cord": (535, 1842),
+    "Furtividade_cord": (535, 1912),
+    "Artimanha_cord": (535, 1982),
+    "Movimentação_cord": (535, 2052),
+    "Pontaria_cord": (535, 2122),
+    "Patrulha_cord": (535, 2192),
+    "Tradição_cord": (535, 2262),
+    "Sobrevivência_cord": (535, 2332),
+    "Discernimento_cord": (535, 2402),
+    "Manipulação_cord": (535, 2472),
+    "Atuação_cord": (535, 2542),
+    "Cura_cord": (535, 2612),
+    "Adestramento_cord": (535, 2682),
     #======================#
     "idade_cord": (810, 996),
     "faixa_etaria_cord": (810, 1045),
     "arma_escolhida_cord": (700, 2120),
-    "info_armas_cord": (1200, 2120),
+    "info_armas_cord": (1200, 2120)
     #======================#
 }
 
+coordenadas_armadura = [(790, 1780)]
 coordenadas_pag1_User = [(770, 440), (770, 630), (770, 830), (1410, 530), (1410, 680), (1410, 820)]
 coordenadas_pag1_Mestre = [(1000, 1030)]
 

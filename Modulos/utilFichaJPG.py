@@ -44,3 +44,16 @@ def escrever_texto_em_varias_coordenadas_MESTRE(imagem, texto, coordenadas):
     # Itere sobre as coordenadas e escreva o texto em cada uma delas
     for coord in coordenadas:
         draw.text(coord, texto, fill=cor_do_texto, font=fonte)
+
+def escrever_armadura(imagem, texto, coordenadas):
+    draw = ImageDraw.Draw(imagem)
+    tamanho_da_fonte = 55
+
+    fonte = ImageFont.truetype("arial", tamanho_da_fonte)
+
+    # Especifique a cor do texto (por exemplo, preto)
+    cor_do_texto = (0, 0, 0)  # RGB (preto)
+
+    # Itere sobre as coordenadas e escreva o texto em cada uma delas
+    for coord in coordenadas:
+        draw.text(coord, texto, fill=cor_do_texto, font=fonte)

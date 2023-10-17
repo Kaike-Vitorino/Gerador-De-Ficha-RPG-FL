@@ -5,7 +5,8 @@ raca, raca_info = gerar_raca()
 print(f"Raca escolhida: {raca}")
 
 # Gerar classe aleatoria
-classe = gerar_classe(raca,racas_info,classes)
+#classe = gerar_classe(raca,racas_info,classes)
+classe = "Rider"
 print(f"Classe escolhida: {classe}")
 
 
@@ -27,7 +28,12 @@ pericias_distribuidas = distribuir_pontos_pericia(faixa_etaria, classe)
 print(f"Pericias distribuidas: {pericias_distribuidas}")
 
 # Gerar arma
-gerar_arma(classe)
+if classe == "Rider":
+    armas_escolhidas = gerar_arma(classe)
+    print(f"arma_escolhida_final: {armas_escolhidas}")
+else:
+    arma_escolhida = gerar_arma(classe)
+    print(f"arma_escolhida_final: {arma_escolhida}")
 
 # Gerar talentos
 talentos_escolhidos = escolher_talentos(classe, raca, faixa_etaria)
@@ -43,6 +49,5 @@ else:
     pass
 
 # Gerar ficha
-gerar_info_ficha(classe, raca, atributos_chave, idade, faixa_etaria, atributos_randomizados, talentos_escolhidos, pericias_distribuidas)
-
+gerar_info_ficha(classe, raca, atributos_chave, idade, faixa_etaria, atributos_randomizados, talentos_escolhidos, pericias_distribuidas, armas_escolhidas)
 #===============================================================================
