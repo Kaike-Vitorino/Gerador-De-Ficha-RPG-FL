@@ -1,10 +1,13 @@
-# importasndo as coisa do outro modulo
 from classes import *
 
-# Variavel Lista q contem as racas
+'''
+   Modulo com todas informacoes de todas as racas.
+'''
+
+# Variavel Lista q contem as racas.
 racas = ["Humano", "Elfo", "Anão", "Goblin", "Orc", "Meio-Elfo", "Halfling", "Lupino"]
 
-# Dicionário que armazena informações sobre as raças
+# Dicionário que armazena informações sobre as raças.
 racas_info = {
     "Humano": {"atributo_chave": "Empatia", "talento_ascendente": "Adaptive", "profissoes_tipicas": classes},
     "Meio-Elfo": {"atributo_chave": "Inteligência", "talento_ascendente": "Poder mental", "profissoes_tipicas": ["Druida", "Mago", "Ladino"]},
@@ -16,7 +19,7 @@ racas_info = {
     "Elfo": {"atributo_chave": "Agilidade", "talento_ascendente": "Paz Interior", "profissoes_tipicas": ["Caçador", "Druida", "Bardo"]}
 }
 
-# Dicionário com as idades para cada raça
+# Dicionário com as idades para cada raça.
 idade_racas = {
     "Humano": {"Jovem": (16, 25), "Adulto": (26, 50), "Idoso": (51, 80)},
     "Meio-Elfo": {"Jovem": (16, 30), "Adulto": (31, 100), "Idoso": (101, 180)},
@@ -25,5 +28,5 @@ idade_racas = {
     "Lupino": {"Jovem": (13, 20), "Adulto": (21, 40), "Idoso": (41, 65)},
     "Orc": {"Jovem": (13, 20), "Adulto": (21, 45), "Idoso": (46, 70)},
     "Goblin": {"Jovem": (16, 25), "Adulto": (26, 60), "Idoso": (61, 95)},
-    "Elfo": {"Adulto": (26, 1000)}  # Elfos sempre são adultos
+    "Elfo": {"Adulto": (26, 1000)}  # Elfos sempre são adultos.
 }

@@ -1,10 +1,13 @@
-# importasndo as coisa do outro modulo
 from itens import *
 
-# Variavel Lista q contem as classes
+'''
+   Modulo com todas informacoes de todas as classes.
+'''
+
+# Lista q contem as todas as classes.
 classes = ["Caçador", "Druida", "Mago", "Rider", "Guerreiro", "Ladino", "Mascate", "Bardo"]
 
-#Infos da classe/profissoes
+# Infos da classe/profissoes.
 classe_info = {
     "Caçador": {
         "atributo_chave": "Agilidade",
@@ -104,7 +107,7 @@ classe_info = {
     }
 }
 
-# Dicionario de talentos das classes
+# Dicionario de talentos das classes.
 talentos_classes = {
     "Caçador": ["Caminho da Fera", "Caminho da Flecha", "Caminho da Floresta"],
     "Druida": ["Caminho da Cura", "Caminho da Visão", "Caminho do Metamorfo"],
@@ -116,5 +119,6 @@ talentos_classes = {
     "Bardo": ["Caminho da Canção", "Caminho do Grito de Guerra", "Caminho do Hino"]
 }
 
-# Dicionario de armas de 1m
-armas_1m_lista = list(armas_1m.keys())
+# Dicionario de armas de 1m (que so precisa empunhar com uma mao).
+# Tive que declarar somente ela dessa forma pq o guerreiro eh o unico que usa ela.
+armas_1m_lista = list(lista_todas_armas_1m.keys())

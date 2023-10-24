@@ -5,36 +5,44 @@ from classes import *
 from racas_data import *
 from skills_pericias_atributos import *
 
-# Declarando essa varivel para funcionar no code inteiro
+'''
+   Modulo onde todas as funcoes essencias para a confeccao de toda a parte bruta/escrita na ficha.
+        Varias variaveis sao declaradas e definidas.
+        Aqui tem tudo para sair as infos da ficha inteira so que em forma de texto.
+        
+    Ps: Nn utilizei objetos ou classes novas, infelizmente eu ainda nn tinha o conhecimento da existencia delas
+'''
+
+# Declarando essas variveis que vao ser utilizadas em varios locais diferentes.
 raca = ""
 artefato_musical_escolhido = ""
 arma_escolhida = ""
 equipamentos = []
 
 
-# Funcao para gerar raca aleatoria
+# Funcao para gerar raca aleatoria.
 def gerar_raca():
     raca_aleatoria = random.choice(racas)
     raca_info = racas_info[raca_aleatoria]
     return raca_aleatoria, raca_info
 
-# Funcao para gerar classe
+# Funcao para gerar classe.
 def gerar_classe(raca,racas_info,classes):
     classe = random.choice(racas_info[raca]["profissoes_tipicas"])
     return classe
 
-# Funcao para obter atributos chave de forma balanceada
+# Funcao para obter os atributos chaves.
 def obter_atributos_chave(classe, raca, raca_info):
     atributo_chave_classe = classe_info[classe]["atributo_chave"]
     atributo_chave_raca = raca_info["atributo_chave"]
-    # Verifique se os atributos-chave são iguais e crie a lista de atributos
+    # Verifique se os atributos-chave são iguais e crie a lista de atributos.
     atributos_chave = []
     if atributo_chave_classe != atributo_chave_raca:
         atributos_chave.append(atributo_chave_classe)
     atributos_chave.append(atributo_chave_raca)
     return atributos_chave
 
-# Funcao para calcular idade
+# Funcao para calcular idade.
 def calcular_idade(raca):
     if raca == "Elfo":
         idade = random.randint(26, 1000)
@@ -56,6 +64,7 @@ def calcular_idade(raca):
         print(f"Intervalo de idade não encontrado para a raça {raca}. Tentando novamente.")
         return calcular_idade(raca)
 
+# Funcao onde os pontos de atributo sao distribuidos e o valor/nivel dos atributos determinados.
 def escolher_atributos(faixa_etaria, atributos_chave):
     if faixa_etaria == "Jovem":
         pontos_disponiveis = 15
@@ -68,20 +77,20 @@ def escolher_atributos(faixa_etaria, atributos_chave):
 
     atributos_randomizados = {atributo: [0, 5] for atributo in todos_atributos}
 
-    # Distribuir 2 pontos para cada atributo não-chave
+    # Distribuir 2 pontos para cada atributo não-chave.
     for atributo in todos_atributos:
         if atributo not in atributos_chave:
             atributos_randomizados[atributo][0] = 2
             pontos_disponiveis -= 2
 
-    # Distribuir pontos igualmente entre os atributos chave
+    # Distribuir pontos igualmente entre os atributos chave.
     pontos_por_atributo_chave = pontos_disponiveis // len(atributos_chave)
 
     for atributo in atributos_chave:
         atributos_randomizados[atributo][0] = min(pontos_por_atributo_chave, 5)
         pontos_disponiveis -= atributos_randomizados[atributo][0]
 
-    # Distribuir pontos restantes, se houver
+    # Distribuir pontos restantes, se houver.
     pontos_restantes = pontos_disponiveis
     atributos_ordenados = list(atributos_randomizados.keys())
     random.shuffle(atributos_ordenados)
@@ -91,7 +100,7 @@ def escolher_atributos(faixa_etaria, atributos_chave):
         pontos_a_adicionar = min(5 - atributos_randomizados[atributo][0], 1)
         atributos_randomizados[atributo][0] += pontos_a_adicionar
 
-    # Adicionar +1 ponto ao atributo-chave se houver apenas um
+    # Adicionar +1 ponto ao atributo-chave se houver apenas um.
     if len(atributos_chave) == 1:
         atributo_chave = atributos_chave[0]
         atributos_randomizados[atributo_chave][0] += 1
@@ -101,7 +110,8 @@ def escolher_atributos(faixa_etaria, atributos_chave):
     return atributos_randomizados
 
 """
-# Funcao para escolher atributos de forma balanceada
+# Funcao para escolher atributos de forma balanceada.
+# Uma funcao parecida com a funcao acima, so que essa preza pelo balanceamento puro enquanto a outra preza por um ponto forte.
 def escolher_atributos_Balanceado(faixa_etaria, classe, atributos, classe_info):
     if faixa_etaria == "Jovem":
         pontos_disponiveis = 15
@@ -128,7 +138,7 @@ def escolher_atributos_Balanceado(faixa_etaria, classe, atributos, classe_info):
     return atributos_randomizados
 """
 
-# Funcao para distribuir pontos de pericia
+# Funcao para distribuir pontos de pericia.
 def distribuir_pontos_pericia(faixa_etaria, classe):
     pontos_disponiveis = 0
 
@@ -169,7 +179,7 @@ def randomizar_talento_classe(classe, talentos_sem_lvl):
         #print(f"Talentos para a classe {classe} não encontrados. Tentando novamente.")
         return randomizar_talento_classe(classe)
 
-# Funcao para randomizar talentos gerais
+# Funcao para randomizar talentos gerais.
 def randomizar_talentos_gerais(faixa_etaria, classe, nivel, talentos_sem_lvl):
     quantidade_talentos = 0
 
@@ -184,6 +194,7 @@ def randomizar_talentos_gerais(faixa_etaria, classe, nivel, talentos_sem_lvl):
     talentos_escolhidos = {}
 
     # Randomiza se vai ter 1 talento sacrificado ou não
+        # Se um talento eh sacrificado na criacao da ficha, ele tem direito de subir outro talento para o lvl2
     talento_sacrificado = random.choice([True, False])
     #print(f"Talento sacrificado: {talento_sacrificado}")
 
@@ -224,26 +235,27 @@ def randomizar_talentos_gerais(faixa_etaria, classe, nivel, talentos_sem_lvl):
 
     return talentos_escolhidos
 
-# Funcao para adicionar os talentos na ficha
+# Funcao para adicionar os talentos na ficha.
+# Funcao central dos talentos. Essa funcao puxa as outras 3 funcoes acima e juntas elas em uma logica para conseguir uma quantidade de talentos balanceados.
 def escolher_talentos(classe, raca, faixa_etaria):
     talentos = []
     talentos_sem_lvl = []
     nivel = 1
 
-    # Adicionando talento ascendente da raca
+    # Adicionando talento ascendente da raca.
     talentos_sem_lvl = randomizar_talento_ascendente(raca, talentos_sem_lvl)
     #print(f"Talento ascendente: {talentos_sem_lvl}")
 
-    # Chama a funcao que randomiza talento da classe
+    # Chama a funcao que randomiza talento da classe.
     talentos_sem_lvl = randomizar_talento_classe(classe, talentos_sem_lvl)
     #print(f"Talento da classe: {talentos_sem_lvl}")
 
-    # Chama a funcao que randomiza os talentos gerais
+    # Chama a funcao que randomiza os talentos gerais.
     talentos_escolhidos = randomizar_talentos_gerais(faixa_etaria, classe, nivel, talentos_sem_lvl)
 
     return talentos_escolhidos
 
-# Funcao para rolar o numero de dados da prata ja q ela eh dada em string e eu nn sei oq fazer mais da minha vida kkkkkk
+# Funcao para rolar o numero de dados da prata, ja q ela eh dada em string eh necessario fazer dessa forma pra nn sumir com o "D"
 def rolar_dados_prata(dados_str):
     if dados_str.startswith("D"):
         num_faces = int(dados_str[1:])
@@ -251,7 +263,9 @@ def rolar_dados_prata(dados_str):
     else:
         return 0
 
-
+# Funcao onde a arma do personagem eh gerada
+# Ela vai puxar as infos das classes e randomizar uma arma dentre as opcoes dadas para cada classe.
+# A classe rider tem 2 armas esclhidas, por conta disso a variavel de arma dessa classe eh diferente.
 def gerar_arma(classe):
     # Escolhendo arma
     global artefato_musical_escolhido, arma_escolhida
@@ -318,10 +332,11 @@ def gerar_arma(classe):
 
     return arma_escolhida, armas_escolhidas
 
-# Inicialize um dicionario vazio para mapear os talentos e os niveis deles
+# Inicializando um dicionario vazio para mapear os talentos e os niveis deles.
 talentos_e_niveis = {}
 
-# Funcao para distribuir XP
+# Funcao para distribuir XP.
+# Se o usuario disse que quer dar XPs extras para uma ficha, essa funcao fica responsavel por receber a quantidade e dividir nas ficha.
 def dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias):
     try:
         pontos_xp = int(input("Digite a quantidade de pontos de XP que o personagem vai ter: "))
@@ -412,6 +427,7 @@ def dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias):
 
 
 # Funcao para gerar informacoes da ficha
+# Essa funcao junta todas as informacoes que foram dadas pelas outras funcoes e dessa forma gera a ficha inteira em texto.
 def gerar_info_ficha(classe, raca, atributos_chave, idade, faixa_etaria, atributos_randomizados, talentos_escolhidos, pericias_distribuidas, armas_escolhidas):
 
     # Rolando quantidade de prata

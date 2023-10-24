@@ -1,7 +1,11 @@
-#
+'''
+   Modulo com todas as informacoes, listas da maior parte dos itens e armas do sistema.
+'''
+
+# Declarando variavel equipamente para que no futuro seja completa com os itens do personagem a ser gerado.
 equipamentos = []
 
-#Lista de itens de comercio, pagina 182
+# Lista de itens de comercio - pagina 182.
 itens_comercio = [
     "Flechas, Ponta de Ferro", "Flechas, Ponta de Madeira", "Aljava", "Arpéu",
     "Corda, 10 Metros", "Vela de Sebo", "Lamparina a Óleo", "Lanterna", "Tochas",
@@ -15,11 +19,17 @@ itens_comercio = [
     "Veneno Letal/Antídoto", "Veneno Paralisante/Antídoto", "Veneno Sonífero/Antídoto", "Veneno Alucinógeno/Antídoto"
 ]
 
-# Variavel para arma escolhida e artefato musical com valor vazio inicialmente, posto aq pq por algum motivo nn tava funfando la dentrod da func da linha 193
+# Declarando variavel aqui pq por algum motivo/bug eu nn conseguia declarar ela na func da linha 193 do modulo util.
 arma_escolhida = ""
 artefato_musical_escolhido = None
 
-# Dicionario de armas com empunhadura 1M
+'''
+    Quando esta escrito um numero x com um M do lado (xM)
+        Exemplo: 1M.
+    Significa qual a quantidade de maos necessarias para empunhar aquelas arma/item.
+'''
+
+# Dicionario de armas com empunhadura 1M.
 armas_1m = {
     "Faca": {"Bonus": "+1", "Dano": "1"},
     "Adaga": {"Bonus": "+1", "Dano": "1"},
@@ -39,7 +49,7 @@ armas_1m = {
     "Tridente": {"Bonus": "+1", "Dano": "2"},
 }
 
-# Dicionario de armas com empunhadura 2M
+# Dicionario de armas com empunhadura 2M.
 armas_2m = {
     "Montante": {"Bonus": "+3", "Dano": "3"},
     "Machado de Duas Mãos": {"Bonus": "+2", "Dano": "3"},
@@ -51,10 +61,10 @@ armas_2m = {
     "Alabarda": {"Bonus": "+2", "Dano": "2"},
 }
 
-# Os 2 dicionarios de armas juntos
+# Os 2 dicionarios de armas juntos.
 lista_armas = {**armas_1m, **armas_2m}
 
-# Dicionario de armas a distância com empunhadura 1M
+# Dicionario de armas a distância com empunhadura 1M.
 armas_distancia_1m = {
     "Pedra": {"Bonus": "+0", "Dano": "1"},
     "Faca de Arremesso": {"Bonus": "+1", "Dano": "1"},
@@ -63,7 +73,7 @@ armas_distancia_1m = {
     "Funda": {"Bonus": "+1", "Dano": "1"},
 }
 
-# Dicionario de armas a distância com empunhadura 2M
+# Dicionario de armas a distância com empunhadura 2M.
 armas_distancia_2m = {
     "Arco Curto": {"Bonus": "+2", "Dano": "1"},
     "Arco Longo": {"Bonus": "+2", "Dano": "1"},
@@ -71,19 +81,22 @@ armas_distancia_2m = {
     "Besta Pesada": {"Bonus": "+1", "Dano": "3"},
 }
 
-# Juntando os dois dicionarios de armas a distancia
+# Juntando os dicionarios das armas1M a distancia e as normais.
+lista_todas_armas_1m = {**armas_1m, **armas_distancia_1m}
+
+# Juntando os dois dicionarios de armas a distancia.
 lista_armas_a_distancia = {**armas_distancia_1m, **armas_distancia_2m}
 
-# Juntando todos os dicionarios de armas
+# Juntando todos os dicionarios de armas.
 lista_armas_FINAL = {**lista_armas_a_distancia, **lista_armas}
 
-# Dicionario de Escudos
+# Dicionario de Escudos.
 lista_escudos = {
     "Escudo Pequeno": {"Bonus": "+1"},
     "Escudo Grande": {"Bonus": "+2"},
 }
 
-# Dicionario de Armaduras e Elmos
+# Dicionario de Armaduras e Elmos.
 lista_armaduras = {
     "Couro": {"Valor de Armadura": "2", "Parte do Corpo": "Corpo"},
     "Couro Batido": {"Valor de Armadura": "3", "Parte do Corpo": "Corpo"},

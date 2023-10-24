@@ -3,8 +3,11 @@ from FichaCoordenadas import *
 import webbrowser
 from util import *
 
-#=============================================================================================================================================
-
+'''
+   Modulo onde eh feito a funcao PRINCIPAL.
+        Aqui se puxa todas as outras funcoes de todos os outros modulos e faz a ficha inteira.
+        Desde consegui todas as infos da ficha e ela escrita, quanto a edicao e o print do arquivo da ficha.
+'''
 def Ficha_Random():
     # Gerar raca aleatoria
     raca, raca_info = gerar_raca()

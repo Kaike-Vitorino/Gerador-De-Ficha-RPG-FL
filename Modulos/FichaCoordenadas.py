@@ -1,6 +1,8 @@
-from util import *
+'''
+   Modulo responsavel por todas as coordenadas necessarias para ser realizada a impressao na ficha.
+'''
 
-#variavel com as coordenadas simples da pagina 1
+# Variavel com as coordenadas simples da pagina 1.
 coordenadas_pag1 = {
     "raca_cord": (210, 195),
     "classe_cord": (1560, 195),
@@ -37,11 +39,12 @@ coordenadas_pag1 = {
     #======================#
 }
 
+# Coordenadas de coisas que nao tem uma variavel definida.
 coordenadas_armadura = [(790, 1780)]
 coordenadas_pag1_User = [(770, 440), (770, 630), (770, 830), (1410, 530), (1410, 680), (1410, 820)]
 coordenadas_pag1_Mestre = [(1000, 1030)]
 
-#variavel com as coordenadas simples da pagina 2
+# Variavel com as coordenadas simples da pagina 2.
 coordenadas_pag2 = {
     "Dx_comida": (322, 392),
     "Dx_agua": (322, 412),
@@ -49,6 +52,7 @@ coordenadas_pag2 = {
     "equipamentos_cord": (322, 332),
 }
 
+# Um mapa que mostra qual variavel pertence a qual coordenada.
 mapa_chaves = {
     "raca_cord": "raca",
     "classe_cord": "classe",
