@@ -1,3 +1,5 @@
+![Cover](https://raw.githubusercontent.com/Kaike-Vitorino/Gerador-De-Ficha-RPG-FL/main/Artes_Ficha_Livro/Artes_Front/FL%20-%20Generator%20-%20Background_Inicial.png)
+
 ## Por que Pensei Neste Projeto
 
 No sistema amplamente conhecido de RPG "Forbidden Lands", a criação de uma ficha de personagem é essencial para começar o jogo. No entanto, isso requer que todos os jogadores e o mestre leiam os dois livros da franquia, o "Forbidden Lands Quickstart" e o "Forbidden Lands Master", totalizando mais de 400 páginas de leitura e estudo. Um jogador levaria pelo menos uma semana para ler e estudar todo o material necessário para o sistema, e mais 2 ou 3 horas para criar uma ficha de personagem e iniciar a jogatina. Considerando que geralmente são necessários 5 jogadores para jogar o jogo, isso pode atrasar significativamente o início do jogo para todos terem suas fichas prontas.
