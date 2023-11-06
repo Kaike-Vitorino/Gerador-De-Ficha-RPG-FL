@@ -7,10 +7,8 @@ Diante desse cenário, decidi desenvolver um programa que é capaz de gerar fich
 Esperamos que este programa torne a experiência de jogar "Forbidden Lands" mais acessível e divertida para todos os entusiastas de RPG. Acreditamos que ele pode economizar tempo e eliminar as barreiras iniciais que muitos jogadores enfrentam ao entrar nesse mundo incrível de aventuras.
 
 # RPG Character Generator
-
-![GitHub last commit](https://img.shields.io/github/last-commit/Kaike-Vitorino/Gerador-De-Ficha-RPG-FL)
-
-![GitHub top language](https://img.shields.io/github/languages/top/Kaike-Vitorino/Gerador-De-Ficha-RPG-FL)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
 
 ## Descrição do Projeto
 
