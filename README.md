@@ -1,3 +1,5 @@
+![Cover](https://raw.githubusercontent.com/Kaike-Vitorino/Gerador-De-Ficha-RPG-FL/main/Artes_Ficha_Livro/Artes_Front/FL%20-%20Generator%20-%20Background_Inicial.png)
+
 ## Por que Pensei Neste Projeto
 
 No sistema amplamente conhecido de RPG "Forbidden Lands", a criação de uma ficha de personagem é essencial para começar o jogo. No entanto, isso requer que todos os jogadores e o mestre leiam os dois livros da franquia, o "Forbidden Lands Quickstart" e o "Forbidden Lands Master", totalizando mais de 400 páginas de leitura e estudo. Um jogador levaria pelo menos uma semana para ler e estudar todo o material necessário para o sistema, e mais 2 ou 3 horas para criar uma ficha de personagem e iniciar a jogatina. Considerando que geralmente são necessários 5 jogadores para jogar o jogo, isso pode atrasar significativamente o início do jogo para todos terem suas fichas prontas.
@@ -7,10 +9,8 @@ Diante desse cenário, decidi desenvolver um programa que é capaz de gerar fich
 Esperamos que este programa torne a experiência de jogar "Forbidden Lands" mais acessível e divertida para todos os entusiastas de RPG. Acreditamos que ele pode economizar tempo e eliminar as barreiras iniciais que muitos jogadores enfrentam ao entrar nesse mundo incrível de aventuras.
 
 # RPG Character Generator
-
-![GitHub last commit](https://img.shields.io/github/last-commit/Kaike-Vitorino/Gerador-De-Ficha-RPG-FL)
-
-![GitHub top language](https://img.shields.io/github/languages/top/Kaike-Vitorino/Gerador-De-Ficha-RPG-FL)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-092E20?style=for-the-badge&logo=flask&logoColor=white)
 
 ## Descrição do Projeto
 
