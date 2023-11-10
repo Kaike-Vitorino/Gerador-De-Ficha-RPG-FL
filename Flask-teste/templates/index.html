@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Ficha RPG</title>
+</head>
+<body>
+    <h1>Gerador de Ficha RPG</h1>
+    <button onclick="gerarFicha()">Gerar Ficha</button>
+
+    <form id="opcoesUsuario" style="display: none;" onsubmit="return enviarFormulario()">
+        <p>Vai ter algum XP extra para essa ficha?</p>
+        <button type="button" onclick="escolherOpcao('sim')">Sim</button>
+        <button type="button" onclick="escolherOpcao('nao')">Não</button>
+
+        <div id="areaNumero" style="display: none;">
+            <label for="numeroXP">Insira um número:</label>
+            <input type="number" id="numeroXP" name="numeroXP">
+        </div>
+
+        <button type="button" onclick="criarFicha()">Enviar</button>
+    </form>
+
+    <script>
+        function gerarFicha() {
+            document.getElementById("opcoesUsuario").style.display = "block";
+        }
+
+        function escolherOpcao(opcao) {
+            if (opcao === 'sim') {
+                document.getElementById("areaNumero").style.display = "block";
+            } else {
+                document.getElementById("areaNumero").style.display = "none";
+            }
+        }
+
+        function criarFicha() {
+            // Aqui você pode adicionar lógica adicional antes de criar a ficha
+            // Certifique-se de manipular a entrada do usuário conforme necessário
+            alert("Função criarFicha() seria chamada aqui!");
+        }
+    </script>
+</body>
+</html>
