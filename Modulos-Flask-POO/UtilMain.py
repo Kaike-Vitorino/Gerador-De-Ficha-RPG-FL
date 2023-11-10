@@ -34,14 +34,6 @@ def Ficha_Random():
     #Gerar armas
     arma_escolhida, armas_escolhidas = gerar_arma(classe)
 
-    '''
-    if classe == "Rider":
-        armas_escolhidas = gerar_arma(classe)
-        print(f"arma_escolhida_final: {armas_escolhidas}")
-    else:
-        arma_escolhida = gerar_arma(classe)
-        print(f"arma_escolhida_final: {arma_escolhida}")'''
-
     # Gerar talentos
     talentos_escolhidos = escolher_talentos(classe, raca, faixa_etaria)
     print(f"Talentos escolhidos:", talentos_escolhidos)

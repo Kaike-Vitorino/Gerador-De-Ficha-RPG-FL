@@ -1,7 +1,5 @@
 # Imports de modulos e pacotes
 import random
-from itens import *
-from classes import *
 from racas_data import *
 from skills_pericias_atributos import *
 
@@ -9,8 +7,6 @@ from skills_pericias_atributos import *
    Modulo onde todas as funcoes essencias para a confeccao de toda a parte bruta/escrita na ficha.
         Varias variaveis sao declaradas e definidas.
         Aqui tem tudo para sair as infos da ficha inteira so que em forma de texto.
-        
-    Ps: Nn utilizei objetos ou classes novas, infelizmente eu ainda nn tinha o conhecimento da existencia delas
 '''
 
 # Declarando essas variveis que vao ser utilizadas em varios locais diferentes.
@@ -108,35 +104,6 @@ def escolher_atributos(faixa_etaria, atributos_chave):
     atributos_randomizados = {atributo: valor[0] for atributo, valor in atributos_randomizados.items()}
 
     return atributos_randomizados
-
-"""
-# Funcao para escolher atributos de forma balanceada.
-# Uma funcao parecida com a funcao acima, so que essa preza pelo balanceamento puro enquanto a outra preza por um ponto forte.
-def escolher_atributos_Balanceado(faixa_etaria, classe, atributos, classe_info):
-    if faixa_etaria == "Jovem":
-        pontos_disponiveis = 15
-    elif faixa_etaria == "Adulto":
-        pontos_disponiveis = 14
-    else:  # Idoso
-        pontos_disponiveis = 13
-
-    atributos_randomizados = copy.deepcopy(atributos)
-
-    # Distribuir pontos igualmente entre os atributos
-    num_atributos = len(atributos_randomizados)
-    pontos_por_atributo = pontos_disponiveis // num_atributos
-    for atributo in atributos_randomizados:
-        atributos_randomizados[atributo][0] = min(atributos_randomizados[atributo][1], pontos_por_atributo)
-
-    # Distribuir pontos restantes, se houver
-    pontos_restantes = pontos_disponiveis % num_atributos
-    atributos_ordenados = list(atributos_randomizados.keys())
-    random.shuffle(atributos_ordenados)
-    for i in range(pontos_restantes):
-        atributo = atributos_ordenados[i]
-        atributos_randomizados[atributo][0] += 1
-    return atributos_randomizados
-"""
 
 # Funcao para distribuir pontos de pericia.
 def distribuir_pontos_pericia(faixa_etaria, classe):

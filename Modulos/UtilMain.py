@@ -48,6 +48,7 @@ def Ficha_Random():
 
     # Dividir XP
     vai_ter_xp_escolha = input(f"Vai ter algum xp extra para essa ficha? s/n\n")
+    vai_ter_xp_escolha = (vai_ter_xp_escolha).lower()
     if vai_ter_xp_escolha == "s":
         talentos_escolhidos, pericias_distribuidas = dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias)
         print(f"Talentos escolhidos após dividir XP:", talentos_escolhidos)
