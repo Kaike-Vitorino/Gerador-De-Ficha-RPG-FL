@@ -4,33 +4,6 @@ import webbrowser
 from PIL import Image, ImageDraw, ImageFont
 import random
 
-app = Flask(__name__)
-
-# Obtenha o diretório do script atual
-diretorio_atual = os.path.dirname(os.path.realpath(__file__))
-
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-@app.route('/criar_ficha', methods=['POST'])
-def criar_ficha():
-    # Chama a função para criar a ficha
-    ficha_path = os.path.join(diretorio_atual, 'Pagina1_preenchida.jpg')
-
-    # Verifica se foi enviado um valor para 'numero_xp' no formulário
-    numero_xp = request.form.get('numero_xp', None)
-
-    # Aqui você pode passar o valor de 'numero_xp' para a função Ficha_Random se desejar
-    Ficha_Random(numero_xp)
-
-    # Retorna o nome da imagem como JSON
-    return jsonify({"Pagina1_preenchida.jpg": ficha_path})
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
-#==================================
 def Ficha_Random(numero_xp):
     # Gerar raca aleatoria
     raca, raca_info = gerar_raca()
@@ -130,8 +103,13 @@ def Ficha_Random(numero_xp):
     #Pagina 1 da ficha
 
     # Carrega a imagem da ficha
-    imagem_entrada = 'Pagina1.jpg'
-    imagem_saida = 'Pagina1_preenchida.jpg'
+    imagem_entrada = 'Flask-teste/Pagina1.jpg'
+    imagem_saida = os.path.join(os.path.dirname(__file__), 'static', 'Pagina1_preenchida.jpg')
+
+    # Verifique se o caminho do arquivo de saída é relativo ao diretório static
+    if not imagem_saida.startswith(os.path.join('static', os.sep)):
+        imagem_saida = os.path.join('static', imagem_saida)
+
     imagem = Image.open(imagem_entrada)
 
     # Adicione todas as variáveis à ficha usando as coordenadas
@@ -187,6 +165,8 @@ def Ficha_Random(numero_xp):
             # Verifique se o valor é uma lista ou um dicionário
             if not isinstance(valor, (list, dict)):
                 adicionar_texto_na_ficha(imagem, str(valor), cord)
+
+        adicionar_texto_na_ficha(imagem, f"XP inicial: {numero_xp}", (110, 325))
 
     #Por a armadura do guerreiro na ficha
     if classe == "Guerreiro":
@@ -1186,3 +1166,30 @@ talentos_gerais = {
               "Desbravador", "Destemido", "Herbalista", "Incorruptível", "Língua afiada", "Mestre em facas"],
 }
 #============================================================================================================================================
+
+app = Flask(__name__)
+
+# Obtenha o diretório do script atual
+diretorio_atual = os.path.dirname(os.path.realpath(__file__))
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/generate', methods=['POST'])
+def generate():
+    # Obtenha o número de XP do formulário
+    numero_xp = int(request.form['xp'])
+
+    # Chame sua função para criar a imagem
+    Ficha_Random(numero_xp)
+
+    # Construa o caminho para o arquivo Pagina1_preenchida.jpg no diretório static
+    filename = 'Pagina1_preenchida.jpg'
+    path = os.path.join(app.root_path, 'static', filename)
+
+    # Use send_file para enviar a imagem como resposta
+    return send_file(path, mimetype='image/jpg')
+
+if __name__ == '__main__':
+    app.run(debug=True)
