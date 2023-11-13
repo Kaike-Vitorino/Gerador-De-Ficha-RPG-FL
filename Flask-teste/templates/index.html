@@ -2,17 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XP Generator</title>
+    <title>Gerador de Ficha RPG</title>
+    <style>
+        body {
+            background-image: url('/static/wallpaper.png'); /* Substitua 'wallpaper.jpg' pelo nome real do seu arquivo de imagem */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.8); /* Define uma cor de fundo semi-transparente para o formulário */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+         img {
+            margin-top: 20px; /* Adicione um espaçamento superior à imagem */
+            max-width: 100%; /* Garante que a imagem não ultrapasse a largura do contêiner pai */
+            max-height: 800px; /* Defina a altura máxima desejada para a imagem */
+        }
+    </style>
 </head>
 <body>
-    <h1>XP Generator</h1>
-
-    <form action="/generate" method="post">
+    <form method="post" action="/generate" id="xpForm">
         <label for="xp">Número de XP inicial:</label>
         <input type="number" id="xp" name="xp" required>
-        <button type="submit">Gerar Ficha</button>
+        <button type="submit">Gerar ficha</button>
     </form>
+
+    {% if ficha_gerada %}
+        <img src="/static/Pagina1_preenchida.jpg" alt="Ficha RPG">
+    {% endif %}
+
+    <script>
+        // Redireciona para a página inicial a cada 30 segundos
+        setInterval(function() {
+            window.location.href = "/";
+        }, 90000);  // 30 segundos em milissegundos
+    </script>
 </body>
 </html>

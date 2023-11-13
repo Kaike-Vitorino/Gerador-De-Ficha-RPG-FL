@@ -8,13 +8,17 @@ Diante desse cenário, decidi desenvolver um programa que é capaz de gerar fich
 
 Esperamos que este programa torne a experiência de jogar "Forbidden Lands" mais acessível e divertida para todos os entusiastas de RPG. Acreditamos que ele pode economizar tempo e eliminar as barreiras iniciais que muitos jogadores enfrentam ao entrar nesse mundo incrível de aventuras.
 
-# RPG Character Generator
+# Forbidden Lands Character Generator
+
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-092E20?style=for-the-badge&logo=flask&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF00?style=for-the-badge&logo=javascript&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-0072C6?style=for-the-badge&logo=css3&logoColor=white)
+![HTML](https://img.shields.io/badge/HTML-E34237?style=for-the-badge&logo=html5&logoColor=white)
 
 ## Descrição do Projeto
 
-O RPG Character Generator é uma ferramenta poderosa projetada para simplificar a criação de fichas de personagem no sistema "Forbidden Lands". Este software foi desenvolvido com o intuito de facilitar o processo de início do jogo, economizando tempo e esforço.
+O Forbidden Lands Character Generator é uma ferramenta poderosa projetada para simplificar a criação de fichas de personagem no sistema "Forbidden Lands". Este software foi desenvolvido com o intuito de facilitar o processo de início do jogo, economizando tempo e esforço.
 
 ### Descrição das etapas envolvidas na criação deste programa.
 

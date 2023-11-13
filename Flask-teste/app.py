@@ -1,6 +1,5 @@
 from flask import *
 import os
-import webbrowser
 from PIL import Image, ImageDraw, ImageFont
 import random
 
@@ -34,11 +33,11 @@ def Ficha_Random(numero_xp):
     talentos_escolhidos = escolher_talentos(classe, raca, faixa_etaria)
     print(f"Talentos escolhidos:", talentos_escolhidos)
 
-    if numero_xp <= 1:
+    if numero_xp >= 1:
         print(f"Número de XP extra: {numero_xp}")
 
         # Aqui você pode usar o número_xp como precisar, por exemplo, passá-lo para a função dividir_XP
-        talentos_escolhidos, pericias_distribuidas = dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias)
+        talentos_escolhidos, pericias_distribuidas = dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias, numero_xp)
         print(f"Talentos escolhidos após dividir XP:", talentos_escolhidos)
         print(f"Perícias distribuídas após dividir XP:", pericias_distribuidas)
     else:
@@ -654,12 +653,12 @@ talentos_e_niveis = {}
 
 # Funcao para distribuir XP.
 # Se o usuario disse que quer dar XPs extras para uma ficha, essa funcao fica responsavel por receber a quantidade e dividir nas ficha.
-def dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias):
+def dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias, numero_xp):
     try:
-        pontos_xp = int(input("Digite a quantidade de pontos de XP que o personagem vai ter: "))
+        pontos_xp = numero_xp
     except ValueError:
         print("Digite um número inteiro válido.")
-        return dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias)
+        return dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias, numero_xp)
 
     # Declarando lista de pericias e talentos para o while que vai acontecer
     pericias_disponiveis = list(pericias.keys())
@@ -1166,7 +1165,6 @@ talentos_gerais = {
               "Desbravador", "Destemido", "Herbalista", "Incorruptível", "Língua afiada", "Mestre em facas"],
 }
 #============================================================================================================================================
-
 app = Flask(__name__)
 
 # Obtenha o diretório do script atual
@@ -1174,7 +1172,7 @@ diretorio_atual = os.path.dirname(os.path.realpath(__file__))
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', ficha_gerada=False)
 
 @app.route('/generate', methods=['POST'])
 def generate():
@@ -1189,7 +1187,11 @@ def generate():
     path = os.path.join(app.root_path, 'static', filename)
 
     # Use send_file para enviar a imagem como resposta
-    return send_file(path, mimetype='image/jpg')
+    return render_template('index.html', ficha_gerada=True)
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 if __name__ == '__main__':
     app.run(debug=True)
