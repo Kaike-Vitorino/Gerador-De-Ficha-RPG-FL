@@ -6,13 +6,14 @@ No sistema amplamente conhecido de RPG "Forbidden Lands", a criação de uma fic
 
 Diante desse cenário, decidi desenvolver um programa que é capaz de gerar fichas aleatórias que estejam em conformidade com as rigorosas regras desse sistema de RPG. Isso permitirá que você tenha uma ficha totalmente equilibrada em questão de segundos, economizando dias no processo de iniciar o jogo com seus amigos.
 
-Esperamos que este programa torne a experiência de jogar "Forbidden Lands" mais acessível e divertida para todos os entusiastas de RPG. Acreditamos que ele pode economizar tempo e eliminar as barreiras iniciais que muitos jogadores enfrentam ao entrar nesse mundo incrível de aventuras.
+Espero que este programa torne a experiência de jogar "Forbidden Lands" mais acessível e divertida para todos os entusiastas de RPG. Acreditamos que ele pode economizar tempo e eliminar as barreiras iniciais que muitos jogadores enfrentam ao entrar nesse mundo incrível de aventuras.
+
+**Deve-se lembrar de que o projeto foi concebido, na verdade, não para ser algo muito útil, mas sim para aprimorar minhas habilidades, colocando-as em prática, explorando e testando novas tecnologias para expandir meu conhecimento. Este programa, de fato, não é muito útil para pessoas iniciantes que** **querem jogar esse FL, até porque saber as regras do jogo é imprescindível para a jogatina, sem contar que criar uma ficha do zero sempre será mais interessante. Isso aqui pode ser útil para fazer one-shots do sistema em encontros entre amigos, viagens, etc.**
 
 # Forbidden Lands Character Generator
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-092E20?style=for-the-badge&logo=flask&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF00?style=for-the-badge&logo=javascript&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS-0072C6?style=for-the-badge&logo=css3&logoColor=white)
 ![HTML](https://img.shields.io/badge/HTML-E34237?style=for-the-badge&logo=html5&logoColor=white)
 
@@ -31,6 +32,53 @@ O Forbidden Lands Character Generator é uma ferramenta poderosa projetada para 
 - **Confecção da Ficha de Fato:** Com a ficha pronta, o programa preenche todos os campos correspondentes e a disponibiliza para visualização imediata e, se desejado, para salvar.
 
 - **Interface do Usuário:** interface de usuário simples.
+
+
+## **Como Rodar o Projeto**
+
+Para executar este projeto em sua máquina local, siga os passos abaixo ou o tutorial em video:
+
+[Tutorial em video](https://www.youtube.com/watch?v=f51sToKAaec)
+
+1. **Clone o Repositório:**
+   ```bash
+   git clone https://github.com/Kaike-Vitorino/Gerador-De-Ficha-RPG-FL.git
+   ```
+
+2. **Navegue até o Diretório do Projeto:**
+   ```bash
+   cd Gerador-De-Ficha-RPG-FL
+   ```
+
+3. **Navegue até o Diretório do Flask:**
+   ```bash
+   cd Flask-WebApp
+   ```
+
+4. **Instale as Dependências Necessárias:**
+   ```bash
+   pip install --upgrade -r requirements.txt
+   ```
+
+5. **Inicie o Servidor Flask:**
+   ```bash
+   python app.py
+   ```
+
+6. **Visualize o Projeto no Navegador:**
+   - Após a inicialização, acesse o projeto através do link fornecido no terminal, por exemplo:
+     ```plaintext
+     * Running on http://127.0.0.1:5000
+     ```
+     - Clique no link, e seu navegador abrirá, exibindo a interface do projeto.
+   - Para gerar uma ficha, insira o número desejado de XP no campo apropriado e clique no botão "Gerar Ficha".
+
+   *Essa interação é ilustrada no Video demonstração abaixo, proporcionando uma visão prática do funcionamento do projeto.
+    Clique no texto em destaque ou na imagem:
+
+   [Video demonstração do programa abaixo.](https://www.youtube.com/watch?v=uZCNOTq5j4k)
+
+   [![Miniatura do Vídeo](https://img.youtube.com/vi/uZCNOTq5j4k/maxresdefault.jpg)](https://www.youtube.com/watch?v=uZCNOTq5j4k)
 
 ## Licença
 
