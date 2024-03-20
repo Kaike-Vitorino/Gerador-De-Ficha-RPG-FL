@@ -1,4 +1,4 @@
-from classes import *
+from classes_data import *
 
 '''
    Modulo com todas informacoes de todas as racas.

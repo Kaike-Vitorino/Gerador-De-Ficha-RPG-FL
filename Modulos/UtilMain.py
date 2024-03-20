@@ -14,8 +14,7 @@ def Ficha_Random():
     print(f"Raca escolhida: {raca}")
 
     # Gerar classe aleatoria
-    #classe = gerar_classe(raca,racas_info,classes)
-    classe = "Guerreiro"
+    classe = gerar_classe(raca,racas_info,classes)
     print(f"Classe: {classe}")
 
     # Funcao para obter atributos chave

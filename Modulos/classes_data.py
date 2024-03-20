@@ -1,4 +1,4 @@
-from itens import *
+from itens_data import *
 
 '''
    Modulo com todas informacoes de todas as classes.

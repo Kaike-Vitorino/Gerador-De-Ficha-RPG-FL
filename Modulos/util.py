@@ -1,7 +1,7 @@
 # Imports de modulos e pacotes
 import random
-from itens import *
-from classes import *
+from itens_data import *
+from classes_data import *
 from racas_data import *
 from skills_pericias_atributos import *
 
