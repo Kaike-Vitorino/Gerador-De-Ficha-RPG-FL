@@ -1,16 +1,16 @@
 # Imports de modulos e pacotes
 import random
-from itens_data import *
-from classes_data import *
-from racas_data import *
-from skills_pericias_atributos import *
+from DATA_ITENS import *
+from DATA_CLASSES import *
+from DATA_RACAS import *
+from DATA_skills_atributos_pericias import *
 
 '''
    Modulo onde todas as funcoes essencias para a confeccao de toda a parte bruta/escrita na ficha.
         Varias variaveis sao declaradas e definidas.
         Aqui tem tudo para sair as infos da ficha inteira so que em forma de texto.
         
-    Ps: Nn utilizei objetos ou classes novas, infelizmente eu ainda nn tinha o conhecimento da existencia delas
+    Ps: Nn utilizei objetos ou CLASSES novas, infelizmente eu ainda nn tinha o conhecimento da existencia delas
 '''
 
 # Declarando essas variveis que vao ser utilizadas em varios locais diferentes.
@@ -22,8 +22,8 @@ equipamentos = []
 
 # Funcao para gerar raca aleatoria.
 def gerar_raca():
-    raca_aleatoria = random.choice(racas)
-    raca_info = racas_info[raca_aleatoria]
+    raca_aleatoria = random.choice(RACAS)
+    raca_info = RACAS_INFO[raca_aleatoria]
     return raca_aleatoria, raca_info
 
 # Funcao para gerar classe.
@@ -33,7 +33,7 @@ def gerar_classe(raca,racas_info,classes):
 
 # Funcao para obter os atributos chaves.
 def obter_atributos_chave(classe, raca, raca_info):
-    atributo_chave_classe = classe_info[classe]["atributo_chave"]
+    atributo_chave_classe = CLASSE_INFO[classe]["atributo_chave"]
     atributo_chave_raca = raca_info["atributo_chave"]
     # Verifique se os atributos-chave são iguais e crie a lista de atributos.
     atributos_chave = []
@@ -49,8 +49,8 @@ def calcular_idade(raca):
         faixa_etaria = "Adulto"
         return idade, "Adulto"
     else:
-        if raca in idade_racas:
-            intervalos = idade_racas[raca]
+        if raca in IDADE_RACAS:
+            intervalos = IDADE_RACAS[raca]
             faixa_etaria = random.choices(list(intervalos.keys()), k=1)[0]
             idade_min, idade_max = intervalos[faixa_etaria]
             print(f"Intervalo de idade encontrado para a raça {raca}.")
@@ -112,7 +112,7 @@ def escolher_atributos(faixa_etaria, atributos_chave):
 """
 # Funcao para escolher atributos de forma balanceada.
 # Uma funcao parecida com a funcao acima, so que essa preza pelo balanceamento puro enquanto a outra preza por um ponto forte.
-def escolher_atributos_Balanceado(faixa_etaria, classe, atributos, classe_info):
+def escolher_atributos_Balanceado(faixa_etaria, classe, atributos, CLASSE_INFO):
     if faixa_etaria == "Jovem":
         pontos_disponiveis = 15
     elif faixa_etaria == "Adulto":
@@ -149,7 +149,7 @@ def distribuir_pontos_pericia(faixa_etaria, classe):
     elif faixa_etaria == "Idoso":
         pontos_disponiveis = 12
 
-    pericias_permitidas = classe_info[classe]["pericias"]
+    pericias_permitidas = CLASSE_INFO[classe]["pericias"]
     pericias_distribuidas = {pericia: 0 for pericia in pericias_permitidas}
 
     while pontos_disponiveis > 0:
@@ -161,16 +161,16 @@ def distribuir_pontos_pericia(faixa_etaria, classe):
     return pericias_distribuidas
 
 def randomizar_talento_ascendente(raca, talentos_sem_lvl):
-    talento_ascendente_sem_lvl = racas_info[raca]["talento_ascendente"]
+    talento_ascendente_sem_lvl = RACAS_INFO[raca]["talento_ascendente"]
     talentos_sem_lvl.append(talento_ascendente_sem_lvl)
     #print(f"Talento ascendente:", talentos_sem_lvl)
     return talentos_sem_lvl
 
 # Funcao para randomizar talento
 def randomizar_talento_classe(classe, talentos_sem_lvl):
-    if classe in talentos_classes:
+    if classe in TALENTOS_CLASSES:
         #print(f"Talentos para a classe {classe} encontrados.")
-        talentos_disponiveis = talentos_classes[classe]
+        talentos_disponiveis = TALENTOS_CLASSES[classe]
         talento_escolhido_classe_sem_lvl = random.choice(talentos_disponiveis)
         talentos_sem_lvl.append(talento_escolhido_classe_sem_lvl)
         #print(f"Talento de classe:", talento_escolhido_classe_sem_lvl)
@@ -264,12 +264,12 @@ def rolar_dados_prata(dados_str):
         return 0
 
 # Funcao onde a arma do personagem eh gerada
-# Ela vai puxar as infos das classes e randomizar uma arma dentre as opcoes dadas para cada classe.
+# Ela vai puxar as infos das CLASSES e randomizar uma arma dentre as opcoes dadas para cada classe.
 # A classe rider tem 2 armas esclhidas, por conta disso a variavel de arma dessa classe eh diferente.
 def gerar_arma(classe):
     # Escolhendo arma
     global artefato_musical_escolhido, arma_escolhida
-    armas_disponiveis = classe_info[classe]["equipamentos"]["Arma"]
+    armas_disponiveis = CLASSE_INFO[classe]["equipamentos"]["Arma"]
     arma_escolhida = None
     armas_escolhidas = None
 
@@ -289,8 +289,8 @@ def gerar_arma(classe):
 
         elif classe == "Bardo":
             armas_escolhidas = None
-            arma_escolhida = classe_info[classe]["equipamentos"]["Arma"][0]  # Pega o primeiro item da lista
-            artefato_musical_disponiveis = classe_info[classe]["equipamentos"]["Artefato Musical"]
+            arma_escolhida = CLASSE_INFO[classe]["equipamentos"]["Arma"][0]  # Pega o primeiro item da lista
+            artefato_musical_disponiveis = CLASSE_INFO[classe]["equipamentos"]["Artefato Musical"]
             artefato_musical_escolhido = random.choice(artefato_musical_disponiveis)
 
             equipamentos.insert(0, arma_escolhida)
@@ -298,7 +298,7 @@ def gerar_arma(classe):
 
         elif classe == "Guerreiro":
             armas_escolhidas = None
-            arma_escolhida = random.choice(armas_1m_lista)
+            arma_escolhida = random.choice(ARMAS_1M_LISTA)
             equipamentos.append(arma_escolhida)
 
         else:
@@ -431,36 +431,36 @@ def dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias):
 def gerar_info_ficha(classe, raca, atributos_chave, idade, faixa_etaria, atributos_randomizados, talentos_escolhidos, pericias_distribuidas, armas_escolhidas):
 
     # Rolando quantidade de prata
-    prata_rolada = rolar_dados_prata(classe_info[classe]["dados_recurso"]["Prata"])
+    prata_rolada = rolar_dados_prata(CLASSE_INFO[classe]["dados_recurso"]["Prata"])
     print(f"prata: {prata_rolada}")
 
     # Randomizador de itens da lista de itens de comercio
-    quantidade_itens = classe_info[classe]["equipamentos"]["Itens"]  # Verifica a quantidade de itens que o personagem pode ter
+    quantidade_itens = CLASSE_INFO[classe]["equipamentos"]["Itens"]  # Verifica a quantidade de itens que o personagem pode ter
     print(f"quantidade_itens: {quantidade_itens}")
 
     if arma_escolhida in ["Arco Curto", "Arco Longo"]:
         # Vai ser randomizado todos os itens, inclusive as duas flechas que são os 2 itens iniciais da lista de comercio
-        itens_randomizados = random.sample(itens_comercio, quantidade_itens)  # Randomiza eles
+        itens_randomizados = random.sample(ITENS_COMERCIO, quantidade_itens)  # Randomiza eles
         equipamentos.extend(itens_randomizados)  # adiciona eles nos equipamentos
 
     elif armas_escolhidas in ["Arco Curto", "Arco Longo"]:
         # Vai ser randomizado todos os itens, inclusive as duas flechas que são os 2 itens iniciais da lista de comercio
-        itens_randomizados = random.sample(itens_comercio, quantidade_itens)  # Randomiza eles
+        itens_randomizados = random.sample(ITENS_COMERCIO, quantidade_itens)  # Randomiza eles
         equipamentos.extend(itens_randomizados)  # adiciona eles nos equipamentos
 
     else:
-        itens_randomizados = random.sample(itens_comercio[2:], quantidade_itens)  # Randomiza eles só que como não tem o arco, ele não considera os 2 itens de flechas
+        itens_randomizados = random.sample(ITENS_COMERCIO[2:], quantidade_itens)  # Randomiza eles só que como não tem o arco, ele não considera os 2 itens de flechas
         equipamentos.extend(itens_randomizados)  # adiciona eles nos equipamentos
 
     
     print(f"itens_randomizados: {itens_randomizados,}")
 
     # Criando variaveis Necessarias
-    cavalo = classe_info[classe]["equipamentos"]["Cavalo"]
-    armadura_disponivel = classe_info[classe]["equipamentos"]["Armadura"]
-    info_armaduras = lista_armaduras.get("armadura_disponivel")
-    Dx_comida = classe_info[classe]['dados_recurso']['Comida']
-    Dx_agua = classe_info[classe]['dados_recurso']['Água']
+    cavalo = CLASSE_INFO[classe]["equipamentos"]["Cavalo"]
+    armadura_disponivel = CLASSE_INFO[classe]["equipamentos"]["Armadura"]
+    info_armaduras = LISTA_ARMADURAS.get("armadura_disponivel")
+    Dx_comida = CLASSE_INFO[classe]['dados_recurso']['Comida']
+    Dx_agua = CLASSE_INFO[classe]['dados_recurso']['Água']
     armas_escolhidas_1 = None
     armas_escolhidas_2 = None
 
@@ -486,8 +486,8 @@ def gerar_info_ficha(classe, raca, atributos_chave, idade, faixa_etaria, atribut
     if classe == "Rider":
         armas_escolhidas_1, armas_escolhidas_2 = armas_escolhidas  # Separando a variavel em 2
 
-        info_arma_1 = lista_armas_FINAL.get(armas_escolhidas_1)  # Criando as infos de cada
-        info_arma_2 = lista_armas_FINAL.get(armas_escolhidas_2)  # Criando as infos de cada
+        info_arma_1 = LISTA_ARMAS_FINAL.get(armas_escolhidas_1)  # Criando as infos de cada
+        info_arma_2 = LISTA_ARMAS_FINAL.get(armas_escolhidas_2)  # Criando as infos de cada
 
         print(f"Sua 1º arma:", armas_escolhidas_1)
         print(f"Infos da sua 1º arma:", info_arma_1)
@@ -495,7 +495,7 @@ def gerar_info_ficha(classe, raca, atributos_chave, idade, faixa_etaria, atribut
         print(f"Infos da sua 2º arma:", info_arma_2)
 
     else:
-        info_armas = lista_armas_FINAL.get(arma_escolhida)
+        info_armas = LISTA_ARMAS_FINAL.get(arma_escolhida)
         print(f"Sua arma:", arma_escolhida)
         print(f"Infos da sua arma:", info_armas)
 

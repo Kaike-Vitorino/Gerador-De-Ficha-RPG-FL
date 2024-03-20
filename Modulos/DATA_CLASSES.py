@@ -1,14 +1,14 @@
-from itens_data import *
+from DATA_ITENS import *
 
 '''
-   Modulo com todas informacoes de todas as classes.
+   Modulo com todas informacoes de todas as CLASSES.
 '''
 
-# Lista q contem as todas as classes.
-classes = ["Caçador", "Druida", "Mago", "Rider", "Guerreiro", "Ladino", "Mascate", "Bardo"]
+# Lista q contem as todas as CLASSES.
+CLASSES = ["Caçador", "Druida", "Mago", "Rider", "Guerreiro", "Ladino", "Mascate", "Bardo"]
 
 # Infos da classe/profissoes.
-classe_info = {
+CLASSE_INFO = {
     "Caçador": {
         "atributo_chave": "Agilidade",
         "pericias": ["Furtividade", "Movimentação", "Pontaria", "Patrulha", "Sobrevivência"],
@@ -61,7 +61,7 @@ classe_info = {
         "atributo_chave": "Força",
         "pericias": ["Potência", "Resiliência", "Luta", "Movimentação"],
         "equipamentos": {
-            "Arma": armas_1m,
+            "Arma": ARMAS_1M,
             "Armadura": "Couro",
             "Itens": 1,
             "Artefato Musical": None,
@@ -107,8 +107,8 @@ classe_info = {
     }
 }
 
-# Dicionario de talentos das classes.
-talentos_classes = {
+# Dicionario de talentos das CLASSES.
+TALENTOS_CLASSES = {
     "Caçador": ["Caminho da Fera", "Caminho da Flecha", "Caminho da Floresta"],
     "Druida": ["Caminho da Cura", "Caminho da Visão", "Caminho do Metamorfo"],
     "Mago": ["Caminho da Morte", "Caminho das Rochas", "Caminho do Sangue", "Caminho dos Símbolos"],
@@ -121,4 +121,4 @@ talentos_classes = {
 
 # Dicionario de armas de 1m (que so precisa empunhar com uma mao).
 # Tive que declarar somente ela dessa forma pq o guerreiro eh o unico que usa ela.
-armas_1m_lista = list(lista_todas_armas_1m.keys())
+ARMAS_1M_LISTA = list(LISTA_TODAS_ARMAS_1M.keys())

@@ -9,5 +9,5 @@ Vou estudar sobre orientação a objetos também e verificar se vale a pena faze
 Conhecimentos novos adquiridos e no futuro vao ser implementados - 31/10/2023
 
 Pretendo modificar o codigo futuramente adicionando coisas novas q eu aprendi.
-        Dentre elas objetos, classes e funcoes lambdas que sao bem interessantes.
+        Dentre elas objetos, CLASSES e funcoes lambdas que sao bem interessantes.
 '''

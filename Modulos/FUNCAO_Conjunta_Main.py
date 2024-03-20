@@ -1,7 +1,7 @@
-from utilFichaJPG import *
-from FichaCoordenadas import *
+from FICHA_Funcoes import *
+from FICHA_coordenadas import *
 import webbrowser
-from util import *
+from FUNCOES_geral import *
 
 '''
    Modulo onde eh feito a funcao PRINCIPAL.
@@ -14,7 +14,7 @@ def Ficha_Random():
     print(f"Raca escolhida: {raca}")
 
     # Gerar classe aleatoria
-    classe = gerar_classe(raca,racas_info,classes)
+    classe = gerar_classe(raca, RACAS_INFO, CLASSES)
     print(f"Classe: {classe}")
 
     # Funcao para obter atributos chave
@@ -58,13 +58,13 @@ def Ficha_Random():
     info_armas = None
     info_armas_formatado = None
     if classe != "Rider":
-        info_armas = lista_armas_FINAL.get(arma_escolhida)
+        info_armas = LISTA_ARMAS_FINAL.get(arma_escolhida)
         info_armas_formatado = f"{info_armas['Bonus']} {info_armas['Dano']}"
     
 
-    prata_rolada = rolar_dados_prata(classe_info[classe]["dados_recurso"]["Prata"])
-    Dx_comida = classe_info[classe]['dados_recurso']['Comida']
-    Dx_agua = classe_info[classe]['dados_recurso']['Água']
+    prata_rolada = rolar_dados_prata(CLASSE_INFO[classe]["dados_recurso"]["Prata"])
+    Dx_comida = CLASSE_INFO[classe]['dados_recurso']['Comida']
+    Dx_agua = CLASSE_INFO[classe]['dados_recurso']['Água']
 
 
     if classe == "Rider":

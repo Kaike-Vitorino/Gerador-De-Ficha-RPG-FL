@@ -9,7 +9,7 @@ def Ficha_Random(numero_xp):
     print(f"Raca escolhida: {raca}")
 
     # Gerar classe aleatoria
-    #classe = gerar_classe(raca,racas_info,classes)
+    #classe = gerar_classe(raca,RACAS_INFO,CLASSES)
     classe = gerar_classe(raca, racas_info, classes)
     print(f"Classe: {classe}")
 
@@ -580,7 +580,7 @@ def rolar_dados_prata(dados_str):
 
 
 # Funcao onde a arma do personagem eh gerada
-# Ela vai puxar as infos das classes e randomizar uma arma dentre as opcoes dadas para cada classe.
+# Ela vai puxar as infos das CLASSES e randomizar uma arma dentre as opcoes dadas para cada classe.
 # A classe rider tem 2 armas esclhidas, por conta disso a variavel de arma dessa classe eh diferente.
 def gerar_arma(classe):
     # Escolhendo arma
@@ -951,10 +951,10 @@ lista_armaduras = {
 }
 #============================================================================================================================================
 '''
-   Modulo com todas informacoes de todas as classes.
+   Modulo com todas informacoes de todas as CLASSES.
 '''
 
-# Lista q contem as todas as classes.
+# Lista q contem as todas as CLASSES.
 classes = ["Caçador", "Druida", "Mago", "Rider", "Guerreiro", "Ladino", "Mascate", "Bardo"]
 
 # Infos da classe/profissoes.
@@ -1057,7 +1057,7 @@ classe_info = {
     }
 }
 
-# Dicionario de talentos das classes.
+# Dicionario de talentos das CLASSES.
 talentos_classes = {
     "Caçador": ["Caminho da Fera", "Caminho da Flecha", "Caminho da Floresta"],
     "Druida": ["Caminho da Cura", "Caminho da Visão", "Caminho do Metamorfo"],
@@ -1075,10 +1075,10 @@ armas_1m_lista = list(lista_todas_armas_1m.keys())
 #============================================================================================================================================
 
 '''
-   Modulo com todas informacoes de todas as racas.
+   Modulo com todas informacoes de todas as RACAS.
 '''
 
-# Variavel Lista q contem as racas.
+# Variavel Lista q contem as RACAS.
 racas = ["Humano", "Elfo", "Anão", "Goblin", "Orc", "Meio-Elfo", "Halfling", "Lupino"]
 
 # Dicionário que armazena informações sobre as raças.
