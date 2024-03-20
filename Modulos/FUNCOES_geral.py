@@ -1,7 +1,5 @@
 # Imports de modulos e pacotes
 import random
-from DATA_ITENS import *
-from DATA_CLASSES import *
 from DATA_RACAS import *
 from DATA_skills_atributos_pericias import *
 
@@ -149,7 +147,7 @@ def distribuir_pontos_pericia(faixa_etaria, classe):
     elif faixa_etaria == "Idoso":
         pontos_disponiveis = 12
 
-    pericias_permitidas = CLASSE_INFO[classe]["pericias"]
+    pericias_permitidas = CLASSE_INFO[classe]["PERICIAS"]
     pericias_distribuidas = {pericia: 0 for pericia in pericias_permitidas}
 
     while pontos_disponiveis > 0:
@@ -203,13 +201,13 @@ def randomizar_talentos_gerais(faixa_etaria, classe, nivel, talentos_sem_lvl):
 
         if faixa_etaria == "Jovem" or faixa_etaria == "Adulto":
             # Escolhe os talentos com 1 a menos do que o necessário
-            talentos_atuais_escolhidos = random.sample(talentos_gerais[classe], quantidade_talentos - 1)
+            talentos_atuais_escolhidos = random.sample(TALENTOS_GERAIS[classe], quantidade_talentos - 1)
             talentos_sem_lvl.extend(talentos_atuais_escolhidos)
 
         else: # Idoso
             # Escolhe qual dos dois talentos vai ser nivel 2
             talentos_gerais_escolhidos_sem_lvl = list(
-                random.sample(talentos_gerais[classe], quantidade_talentos - 1))
+                random.sample(TALENTOS_GERAIS[classe], quantidade_talentos - 1))
 
             talentos_sem_lvl.extend(talentos_gerais_escolhidos_sem_lvl)
 
@@ -226,7 +224,7 @@ def randomizar_talentos_gerais(faixa_etaria, classe, nivel, talentos_sem_lvl):
         #print(f"Talento geral:", talentos_atuais_escolhidos)
 
     else:  # Adicionando os talentos de nivel 1 ao dicionário com o nivel especificado
-        talentos_gerais_escolhidos = random.sample(talentos_gerais[classe], quantidade_talentos)
+        talentos_gerais_escolhidos = random.sample(TALENTOS_GERAIS[classe], quantidade_talentos)
         talentos_sem_lvl.extend(talentos_gerais_escolhidos)
         for talento in talentos_sem_lvl:
             talentos_escolhidos[talento] = {"Nivel": nivel}
@@ -338,15 +336,16 @@ talentos_e_niveis = {}
 # Funcao para distribuir XP.
 # Se o usuario disse que quer dar XPs extras para uma ficha, essa funcao fica responsavel por receber a quantidade e dividir nas ficha.
 def dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias):
+    global custo
     try:
         pontos_xp = int(input("Digite a quantidade de pontos de XP que o personagem vai ter: "))
     except ValueError:
         print("Digite um número inteiro válido.")
         return dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias)
 
-    #Declarando lista de pericias e talentos para o while que vai acontecer
+    #Declarando lista de PERICIAS e talentos para o while que vai acontecer
     pericias_disponiveis = list(pericias.keys())
-    talentos_disponiveis = list(talentos_gerais[classe])
+    talentos_disponiveis = list(TALENTOS_GERAIS[classe])
 
     
 
@@ -426,11 +425,12 @@ def dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias):
     return talentos_escolhidos, pericias_distribuidas
 
 
-# Funcao para gerar informacoes da ficha
+# Funcao para gerar e juntar as informacoes da ficha
 # Essa funcao junta todas as informacoes que foram dadas pelas outras funcoes e dessa forma gera a ficha inteira em texto.
 def gerar_info_ficha(classe, raca, atributos_chave, idade, faixa_etaria, atributos_randomizados, talentos_escolhidos, pericias_distribuidas, armas_escolhidas):
 
     # Rolando quantidade de prata
+    global info_arma_1, info_arma_2
     prata_rolada = rolar_dados_prata(CLASSE_INFO[classe]["dados_recurso"]["Prata"])
     print(f"prata: {prata_rolada}")
 

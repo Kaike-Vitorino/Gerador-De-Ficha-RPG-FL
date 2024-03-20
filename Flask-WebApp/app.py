@@ -22,7 +22,7 @@ def Ficha_Random(numero_xp):
     # Gerar atributos
     atributos_randomizados = escolher_atributos(faixa_etaria, atributos_chave)
 
-    # Gerar pontos de pericias
+    # Gerar pontos de PERICIAS
     pericias_distribuidas = distribuir_pontos_pericia(faixa_etaria, classe)
     print(f"Pericias distribuidas: {pericias_distribuidas}")
 
@@ -87,7 +87,7 @@ def Ficha_Random(numero_xp):
         "Dx_agua": Dx_agua
     }
 
-    # Adiocionado todas as pericias que faltaram, para que sejam impressas nivel 0
+    # Adiocionado todas as PERICIAS que faltaram, para que sejam impressas nivel 0
     pericias_faltando = {pericia: 0 for pericia in pericias.keys() if pericia not in pericias_distribuidas}
     pericias_distribuidas.update(pericias_faltando)
     pericias_distribuidas = {k.lower(): v for k, v in pericias_distribuidas.items()}
@@ -459,7 +459,7 @@ def distribuir_pontos_pericia(faixa_etaria, classe):
     elif faixa_etaria == "Idoso":
         pontos_disponiveis = 12
 
-    pericias_permitidas = classe_info[classe]["pericias"]
+    pericias_permitidas = classe_info[classe]["PERICIAS"]
     pericias_distribuidas = {pericia: 0 for pericia in pericias_permitidas}
 
     while pontos_disponiveis > 0:
@@ -660,7 +660,7 @@ def dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias, num
         print("Digite um número inteiro válido.")
         return dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias, numero_xp)
 
-    # Declarando lista de pericias e talentos para o while que vai acontecer
+    # Declarando lista de PERICIAS e talentos para o while que vai acontecer
     pericias_disponiveis = list(pericias.keys())
     talentos_disponiveis = list(talentos_gerais[classe])
 
@@ -961,7 +961,7 @@ classes = ["Caçador", "Druida", "Mago", "Rider", "Guerreiro", "Ladino", "Mascat
 classe_info = {
     "Caçador": {
         "atributo_chave": "Agilidade",
-        "pericias": ["Furtividade", "Movimentação", "Pontaria", "Patrulha", "Sobrevivência"],
+        "PERICIAS": ["Furtividade", "Movimentação", "Pontaria", "Patrulha", "Sobrevivência"],
         "equipamentos": {
             "Arma": ["Arco", "Funda"],
             "Armadura": None,
@@ -973,7 +973,7 @@ classe_info = {
     },
     "Druida": {
         "atributo_chave": "Inteligência",
-        "pericias": ["Resiliência", "Sobrevivência", "Discernimento", "Cura", "Adestramento"],
+        "PERICIAS": ["Resiliência", "Sobrevivência", "Discernimento", "Cura", "Adestramento"],
         "equipamentos": {
             "Arma": ["Bastão", "Faca"],
             "Armadura": None,
@@ -985,7 +985,7 @@ classe_info = {
     },
     "Mago": {
         "atributo_chave": "Inteligência",
-        "pericias": ["Artesanato", "Artimanha", "Tradição", "Discernimento", "Manipulação"],
+        "PERICIAS": ["Artesanato", "Artimanha", "Tradição", "Discernimento", "Manipulação"],
         "equipamentos": {
             "Arma": ["Bastão", "Faca"],
             "Armadura": None,
@@ -997,7 +997,7 @@ classe_info = {
     },
     "Rider": {
         "atributo_chave": "Agilidade",
-        "pericias": ["Resiliência", "Luta", "Pontaria", "Sobrevivência", "Adestramento"],
+        "PERICIAS": ["Resiliência", "Luta", "Pontaria", "Sobrevivência", "Adestramento"],
         "equipamentos": {
             "Arma": ["Lança Curta", "Machadinha","Arco Curto", "Funda"],
             "Armadura": None,
@@ -1009,7 +1009,7 @@ classe_info = {
     },
     "Guerreiro": {
         "atributo_chave": "Força",
-        "pericias": ["Potência", "Resiliência", "Luta", "Movimentação"],
+        "PERICIAS": ["Potência", "Resiliência", "Luta", "Movimentação"],
         "equipamentos": {
             "Arma": armas_1m,
             "Armadura": "Couro",
@@ -1021,7 +1021,7 @@ classe_info = {
     },
     "Ladino": {
         "atributo_chave": "Agilidade",
-        "pericias": ["Luta", "Furtividade", "Artimanha", "Movimentação", "Manipulação"],
+        "PERICIAS": ["Luta", "Furtividade", "Artimanha", "Movimentação", "Manipulação"],
         "equipamentos": {
             "Arma": ["Adaga"],
             "Armadura": None,
@@ -1033,7 +1033,7 @@ classe_info = {
     },
     "Mascate": {
         "atributo_chave": "Empatia",
-        "pericias": ["Artesanato", "Artimanha", "Patrulha", "Discernimento", "Manipulação"],
+        "PERICIAS": ["Artesanato", "Artimanha", "Patrulha", "Discernimento", "Manipulação"],
         "equipamentos": {
             "Arma": ["Faca"],
             "Armadura": None,
@@ -1045,7 +1045,7 @@ classe_info = {
     },
     "Bardo": {
         "atributo_chave": "Empatia",
-        "pericias": ["Tradição", "Discernimento", "Manipulação", "Atuação", "Cura"],
+        "PERICIAS": ["Tradição", "Discernimento", "Manipulação", "Atuação", "Cura"],
         "equipamentos": {
             "Arma": ["Faca"],
             "Armadura": None,
@@ -1107,7 +1107,7 @@ idade_racas = {
 #============================================================================================================================================
 '''
    Modulo com todas a parte dos status do personagem.
-        Todas os atributos, skills, pericias, talentos e etc.
+        Todas os atributos, skills, PERICIAS, talentos e etc.
 '''
 
 # Variavel lista com os atributos.
@@ -1118,7 +1118,7 @@ atributos = {
     'Empatia': [0, 5]
 }
 
-# Dicionario mapeando as pericias e atributos correspondentes.
+# Dicionario mapeando as PERICIAS e atributos correspondentes.
 pericias = {
     "Potência": "Força", "Resiliência": "Força", "Luta": "Força", "Artesanato": "Força", "Furtividade": "Agilidade",
     "Artimanha": "Agilidade", "Movimentação": "Agilidade", "Pontaria": "Agilidade", "Patrulha": "Inteligência",

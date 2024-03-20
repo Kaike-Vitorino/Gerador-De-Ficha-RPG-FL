@@ -3,7 +3,7 @@
 '''
 
 # Variavel com as coordenadas simples da pagina 1.
-coordenadas_pag1 = {
+COORDENADAS = {
     "raca_cord": (210, 195),
     "classe_cord": (1560, 195),
     #===== Atributos =====#
@@ -40,12 +40,12 @@ coordenadas_pag1 = {
 }
 
 # Coordenadas de coisas que nao tem uma variavel definida.
-coordenadas_armadura = [(790, 1780)]
-coordenadas_pag1_User = [(770, 440), (770, 630), (770, 830), (1410, 530), (1410, 680), (1410, 820)]
-coordenadas_pag1_Mestre = [(1000, 1030)]
+COORDENADAS_ARMADURA = [(790, 1780)]
+COORDENADAS_USER = [(770, 440), (770, 630), (770, 830), (1410, 530), (1410, 680), (1410, 820)]
+COORDENADAS_MESTRE = [(1000, 1030)]
 
 # Variavel com as coordenadas simples da pagina 2.
-coordenadas_pag2 = {
+COORDENADAS_PAG2 = {
     "Dx_comida": (322, 392),
     "Dx_agua": (322, 412),
     "prata_rolada": (322, 432),
@@ -53,7 +53,7 @@ coordenadas_pag2 = {
 }
 
 # Um mapa que mostra qual variavel pertence a qual coordenada.
-mapa_chaves = {
+MAPA_CHAVES = {
     "raca_cord": "raca",
     "classe_cord": "classe",
     "Força_cord": "atributos_randomizados",

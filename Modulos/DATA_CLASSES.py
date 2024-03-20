@@ -11,7 +11,7 @@ CLASSES = ["Caçador", "Druida", "Mago", "Rider", "Guerreiro", "Ladino", "Mascat
 CLASSE_INFO = {
     "Caçador": {
         "atributo_chave": "Agilidade",
-        "pericias": ["Furtividade", "Movimentação", "Pontaria", "Patrulha", "Sobrevivência"],
+        "PERICIAS": ["Furtividade", "Movimentação", "Pontaria", "Patrulha", "Sobrevivência"],
         "equipamentos": {
             "Arma": ["Arco", "Funda"],
             "Armadura": None,
@@ -23,7 +23,7 @@ CLASSE_INFO = {
     },
     "Druida": {
         "atributo_chave": "Inteligência",
-        "pericias": ["Resiliência", "Sobrevivência", "Discernimento", "Cura", "Adestramento"],
+        "PERICIAS": ["Resiliência", "Sobrevivência", "Discernimento", "Cura", "Adestramento"],
         "equipamentos": {
             "Arma": ["Bastão", "Faca"],
             "Armadura": None,
@@ -35,7 +35,7 @@ CLASSE_INFO = {
     },
     "Mago": {
         "atributo_chave": "Inteligência",
-        "pericias": ["Artesanato", "Artimanha", "Tradição", "Discernimento", "Manipulação"],
+        "PERICIAS": ["Artesanato", "Artimanha", "Tradição", "Discernimento", "Manipulação"],
         "equipamentos": {
             "Arma": ["Bastão", "Faca"],
             "Armadura": None,
@@ -47,7 +47,7 @@ CLASSE_INFO = {
     },
     "Rider": {
         "atributo_chave": "Agilidade",
-        "pericias": ["Resiliência", "Luta", "Pontaria", "Sobrevivência", "Adestramento"],
+        "PERICIAS": ["Resiliência", "Luta", "Pontaria", "Sobrevivência", "Adestramento"],
         "equipamentos": {
             "Arma": ["Lança Curta", "Machadinha","Arco Curto", "Funda"],
             "Armadura": None,
@@ -59,7 +59,7 @@ CLASSE_INFO = {
     },
     "Guerreiro": {
         "atributo_chave": "Força",
-        "pericias": ["Potência", "Resiliência", "Luta", "Movimentação"],
+        "PERICIAS": ["Potência", "Resiliência", "Luta", "Movimentação"],
         "equipamentos": {
             "Arma": ARMAS_1M,
             "Armadura": "Couro",
@@ -71,7 +71,7 @@ CLASSE_INFO = {
     },
     "Ladino": {
         "atributo_chave": "Agilidade",
-        "pericias": ["Luta", "Furtividade", "Artimanha", "Movimentação", "Manipulação"],
+        "PERICIAS": ["Luta", "Furtividade", "Artimanha", "Movimentação", "Manipulação"],
         "equipamentos": {
             "Arma": ["Adaga"],
             "Armadura": None,
@@ -83,7 +83,7 @@ CLASSE_INFO = {
     },
     "Mascate": {
         "atributo_chave": "Empatia",
-        "pericias": ["Artesanato", "Artimanha", "Patrulha", "Discernimento", "Manipulação"],
+        "PERICIAS": ["Artesanato", "Artimanha", "Patrulha", "Discernimento", "Manipulação"],
         "equipamentos": {
             "Arma": ["Faca"],
             "Armadura": None,
@@ -95,7 +95,7 @@ CLASSE_INFO = {
     },
     "Bardo": {
         "atributo_chave": "Empatia",
-        "pericias": ["Tradição", "Discernimento", "Manipulação", "Atuação", "Cura"],
+        "PERICIAS": ["Tradição", "Discernimento", "Manipulação", "Atuação", "Cura"],
         "equipamentos": {
             "Arma": ["Faca"],
             "Armadura": None,

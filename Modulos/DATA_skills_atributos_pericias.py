@@ -1,6 +1,6 @@
 '''
    Modulo com todas a parte dos status do personagem.
-        Todas os atributos, skills, pericias, talentos e etc.
+        Todas os atributos, skills, PERICIAS, talentos e etc.
 '''
 
 # Variavel lista com os atributos.
@@ -11,8 +11,8 @@ atributos = {
     'Empatia': [0, 5]
 }
 
-# Dicionario mapeando as pericias e atributos correspondentes.
-pericias = {
+# Dicionario mapeando as PERICIAS e atributos correspondentes.
+PERICIAS = {
     "Potência": "Força", "Resiliência": "Força", "Luta": "Força", "Artesanato": "Força", "Furtividade": "Agilidade",
     "Artimanha": "Agilidade", "Movimentação": "Agilidade", "Pontaria": "Agilidade", "Patrulha": "Inteligência",
     "Tradição": "Inteligência", "Sobrevivência": "Inteligência", "Discernimento": "Inteligência", "Manipulação": "Empatia",
@@ -20,7 +20,7 @@ pericias = {
 }
 
 # Dicionario de talentos gerais e qual classe pode ter cada um.
-talentos_gerais = {
+TALENTOS_GERAIS = {
     "Caçador": ["Ambidestria", "Berseker", "Carrasco", "Empunhadura Firme", "Rapido como um raio", "Ruína dos Dragões",
                 "Sangue frio", "Saque rapido", "Sortudo", "Aquartelador", "Arremessador", "Cozinheiro", "Defensor",
                 "Atirador preciso", "Atirador veloz", "Desbravador", "Herbalista", "Marinheiro", "Mestre da Caçada",

@@ -1,6 +1,5 @@
 # Forbidden Lands Character Generator
 
---- 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-092E20?style=for-the-badge&logo=flask&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS-0072C6?style=for-the-badge&logo=css3&logoColor=white)
@@ -17,7 +16,6 @@ Espero que este programa torne a experiência de jogar "Forbidden Lands" mais ac
 
 **Deve-se lembrar de que o projeto foi concebido, na verdade, não para ser algo muito útil, mas sim para aprimorar minhas habilidades, colocando-as em prática, explorando e testando novas tecnologias para expandir meu conhecimento. Este programa, de fato, não é muito útil para pessoas iniciantes que** **querem jogar esse FL, até porque saber as regras do jogo é imprescindível para a jogatina, sem contar que criar uma ficha do zero sempre será mais interessante. Isso aqui pode ser útil para fazer one-shots do sistema em encontros entre amigos, viagens, etc.**
 
---- 
 ## Descrição do Projeto
 
 O Forbidden Lands Character Generator é uma ferramenta projetada para simplificar a criação de fichas de personagem no sistema "Forbidden Lands". Este software foi desenvolvido com o intuito de facilitar o processo de início do jogo, economizando tempo e esforço.
@@ -34,10 +32,7 @@ O Forbidden Lands Character Generator é uma ferramenta projetada para simplific
 
 - **Interface do Usuário:** interface de usuário simples.
 
----
-
 ## Nomenclatura e Uso de Constantes
-
 
 Neste projeto, segui uma convenção de nomenclatura para facilitar a organização e compreensão do código. Aqui está um resumo da nomenclatura utilizada:
 
@@ -62,7 +57,6 @@ O uso de letras maiúsculas ajuda a identificar rapidamente quais variáveis sã
 
 Ao seguir essa nomenclatura e convenção, espero tornar o código mais legível e organizado.
 
---- 
 
 ## **Como Rodar o Projeto**
 
@@ -110,9 +104,6 @@ Para executar este projeto em sua máquina local, siga os passos abaixo ou o tut
 
    [![Miniatura do Vídeo](https://img.youtube.com/vi/uZCNOTq5j4k/maxresdefault.jpg)](https://www.youtube.com/watch?v=uZCNOTq5j4k)
 
----  
 ## Licença
 
 Este projeto está sob a Licença Pública Geral GNU Versão 3 - veja o arquivo [LICENSE](LICENSE.md) para detalhes.
-
---- 

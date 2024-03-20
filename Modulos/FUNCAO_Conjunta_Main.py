@@ -2,6 +2,7 @@ from FICHA_Funcoes import *
 from FICHA_coordenadas import *
 import webbrowser
 from FUNCOES_geral import *
+from PIL import Image
 
 '''
    Modulo onde eh feito a funcao PRINCIPAL.
@@ -12,6 +13,9 @@ def Ficha_Random():
     # Gerar raca aleatoria
     raca, raca_info = gerar_raca()
     print(f"Raca escolhida: {raca}")
+
+    # Declarando variaveis globais que vao ser usador posteriormente
+    global bonus_arma, dano_arma, bonus_arma_1, dano_arma_1, dano_arma_2, bonus_arma_2, arma_escolhida_1, arma_escolhida_2
 
     # Gerar classe aleatoria
     classe = gerar_classe(raca, RACAS_INFO, CLASSES)
@@ -26,7 +30,7 @@ def Ficha_Random():
     # Gerar atributos
     atributos_randomizados = escolher_atributos(faixa_etaria, atributos_chave)
 
-    # Gerar pontos de pericias
+    # Gerar pontos de PERICIAS
     pericias_distribuidas = distribuir_pontos_pericia(faixa_etaria, classe)
     print(f"Pericias distribuidas: {pericias_distribuidas}")
 
@@ -49,7 +53,7 @@ def Ficha_Random():
     vai_ter_xp_escolha = input(f"Vai ter algum xp extra para essa ficha? s/n\n")
     vai_ter_xp_escolha = (vai_ter_xp_escolha).lower()
     if vai_ter_xp_escolha == "s":
-        talentos_escolhidos, pericias_distribuidas = dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias)
+        talentos_escolhidos, pericias_distribuidas = dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, PERICIAS)
         print(f"Talentos escolhidos após dividir XP:", talentos_escolhidos)
         print(f"Pericias distribuidas após dividir XP:", pericias_distribuidas)
     else:
@@ -81,10 +85,9 @@ def Ficha_Random():
         gerar_info_ficha(classe, raca, atributos_chave,idade, faixa_etaria, atributos_randomizados,talentos_escolhidos,
                          pericias_distribuidas, armas_escolhidas)
 
-#=============================================================================================================================================
 
     # Dicionario de variaveis
-    vars = {
+    VARS_CODE = {
         "raca": raca,
         "classe": classe,
         "atributos_randomizados": atributos_randomizados,
@@ -99,8 +102,8 @@ def Ficha_Random():
         "Dx_agua": Dx_agua
     }
 
-    # Adiocionado todas as pericias que faltaram, para que sejam impressas nivel 0
-    pericias_faltando = {pericia: 0 for pericia in pericias.keys() if pericia not in pericias_distribuidas}
+    # Adiocionado todas as PERICIAS que faltaram, para que sejam impressas nivel 0
+    pericias_faltando = {pericia: 0 for pericia in PERICIAS.keys() if pericia not in pericias_distribuidas}
     pericias_distribuidas.update(pericias_faltando)
     pericias_distribuidas = {k.lower(): v for k, v in pericias_distribuidas.items()}
     print(pericias_distribuidas)
@@ -109,17 +112,14 @@ def Ficha_Random():
         bonus_arma, dano_arma = info_armas_formatado.split()
 
 
-#=======================================================================================================================
-
-    #Pagina 1 da ficha
-
+    #Pagina da ficha
     # Carrega a imagem da ficha
     imagem_entrada = 'Pagina1.jpg'
     imagem_saida = 'Pagina1_preenchida.jpg'
     imagem = Image.open(imagem_entrada)
 
     # Adicione todas as variáveis à ficha usando as coordenadas
-    for variavel, cord in coordenadas_pag1.items():
+    for variavel, cord in COORDENADAS.items():
 
         if variavel == "nivel_talento_cord" or variavel == "talento_cord":
             espacamento = 70  # Defina o valor do espaçamento aqui
@@ -164,10 +164,10 @@ def Ficha_Random():
             adicionar_texto_na_ficha(imagem, arma_escolhida_2, cord, espacamento)
 
         else:
-            # Obtenha a chave correspondente em vars
-            chave_vars = mapa_chaves[variavel]
+            # Obtenha a chave correspondente em VARS_CODE
+            chave_vars = MAPA_CHAVES[variavel]
             # Obtenha o valor da variável a partir do seu nome
-            valor = vars[chave_vars]
+            valor = VARS_CODE[chave_vars]
             # Verifique se o valor é uma lista ou um dicionário
             if not isinstance(valor, (list, dict)):
                 adicionar_texto_na_ficha(imagem, str(valor), cord)
@@ -175,13 +175,13 @@ def Ficha_Random():
     #Por a armadura do guerreiro na ficha
     if classe == "Guerreiro":
         Armadura_couro_str = ("Couro")
-        escrever_armadura(imagem, Armadura_couro_str, coordenadas_armadura)
+        escrever_armadura(imagem, Armadura_couro_str, COORDENADAS_ARMADURA)
 
     #Por na ficha onde a escolha vai ser do jogador ou do mestre
     escolha_do_jogador = 'Escolha do JOGADOR'
     escolha_do_mestre = 'Escolha do MESTRE'
-    escrever_texto_em_varias_coordenadas_JOGADOR(imagem, escolha_do_jogador, coordenadas_pag1_User)
-    escrever_texto_em_varias_coordenadas_MESTRE(imagem, escolha_do_mestre, coordenadas_pag1_Mestre)
+    escrever_texto_em_varias_coordenadas_JOGADOR(imagem, escolha_do_jogador, COORDENADAS_USER)
+    escrever_texto_em_varias_coordenadas_MESTRE(imagem, escolha_do_mestre, COORDENADAS_MESTRE)
 
     # Salve a imagem com o texto adicionado
     imagem.save(imagem_saida)
@@ -191,4 +191,3 @@ def Ficha_Random():
 
     # Feche a imagem
     imagem.close()
-#=============================================================================================================================================

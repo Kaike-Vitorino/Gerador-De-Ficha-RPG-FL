@@ -11,8 +11,7 @@ raca, raca_info = gerar_raca()
 print(f"Raca escolhida: {raca}")
 
 # Gerar classe aleatoria
-#classe = gerar_classe(raca, RACAS_INFO, CLASSES)
-classe = "Rider"
+classe = gerar_classe(raca, RACAS_INFO, CLASSES)
 print(f"Classe: {classe}")
 
 # Funcao para obter atributos chave
@@ -24,7 +23,7 @@ idade, faixa_etaria = calcular_idade(raca)
 # Gerar atributos
 atributos_randomizados = escolher_atributos(faixa_etaria, atributos_chave)
 
-# Gerar pontos de pericias
+# Gerar pontos de PERICIAS
 pericias_distribuidas = distribuir_pontos_pericia(faixa_etaria, classe)
 print(f"Pericias distribuidas: {pericias_distribuidas}")
 
@@ -48,7 +47,7 @@ vai_ter_xp_escolha = input(f"Vai ter algum xp extra para essa ficha? s/n\n")
 vai_ter_xp_escolha = (vai_ter_xp_escolha).lower()
 if vai_ter_xp_escolha == "s":
     talentos_escolhidos, pericias_distribuidas = dividir_XP(talentos_escolhidos, pericias_distribuidas, classe,
-                                                            pericias)
+                                                            PERICIAS)
     print(f"Talentos escolhidos após dividir XP:", talentos_escolhidos)
     print(f"Pericias distribuidas após dividir XP:", pericias_distribuidas)
 else:
