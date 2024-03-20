@@ -1,3 +1,10 @@
+# Forbidden Lands Character Generator
+
+--- 
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-092E20?style=for-the-badge&logo=flask&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-0072C6?style=for-the-badge&logo=css3&logoColor=white)
+![HTML](https://img.shields.io/badge/HTML-E34237?style=for-the-badge&logo=html5&logoColor=white)
 ![Cover](https://raw.githubusercontent.com/Kaike-Vitorino/Gerador-De-Ficha-RPG-FL/main/Artes_Ficha_Livro/Artes_Front/FL%20-%20Generator%20-%20Background_Inicial.png)
 
 ## Por que Pensei Neste Projeto
@@ -10,16 +17,10 @@ Espero que este programa torne a experiência de jogar "Forbidden Lands" mais ac
 
 **Deve-se lembrar de que o projeto foi concebido, na verdade, não para ser algo muito útil, mas sim para aprimorar minhas habilidades, colocando-as em prática, explorando e testando novas tecnologias para expandir meu conhecimento. Este programa, de fato, não é muito útil para pessoas iniciantes que** **querem jogar esse FL, até porque saber as regras do jogo é imprescindível para a jogatina, sem contar que criar uma ficha do zero sempre será mais interessante. Isso aqui pode ser útil para fazer one-shots do sistema em encontros entre amigos, viagens, etc.**
 
-# Forbidden Lands Character Generator
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Flask](https://img.shields.io/badge/Flask-092E20?style=for-the-badge&logo=flask&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS-0072C6?style=for-the-badge&logo=css3&logoColor=white)
-![HTML](https://img.shields.io/badge/HTML-E34237?style=for-the-badge&logo=html5&logoColor=white)
-
+--- 
 ## Descrição do Projeto
 
-O Forbidden Lands Character Generator é uma ferramenta poderosa projetada para simplificar a criação de fichas de personagem no sistema "Forbidden Lands". Este software foi desenvolvido com o intuito de facilitar o processo de início do jogo, economizando tempo e esforço.
+O Forbidden Lands Character Generator é uma ferramenta projetada para simplificar a criação de fichas de personagem no sistema "Forbidden Lands". Este software foi desenvolvido com o intuito de facilitar o processo de início do jogo, economizando tempo e esforço.
 
 ### Descrição das etapas envolvidas na criação deste programa.
 
@@ -33,6 +34,35 @@ O Forbidden Lands Character Generator é uma ferramenta poderosa projetada para 
 
 - **Interface do Usuário:** interface de usuário simples.
 
+---
+
+## Nomenclatura e Uso de Constantes
+
+
+Neste projeto, segui uma convenção de nomenclatura para facilitar a organização e compreensão do código. Aqui está um resumo da nomenclatura utilizada:
+
+### Arquivos e Diretórios:
+
+- **DATA_**: Prefixo utilizado para arquivos que retêm informações e dados utilizados pelo programa. Por exemplo, `DATA_racas`, `DATA_classes`, entre outros. Esses arquivos geralmente contêm estruturas de dados como dicionários, listas ou mapas.
+
+- **FUNCOES_**: Prefixo utilizado para arquivos que contêm funções lógicas utilizadas pelo programa. Por exemplo, `FUNCOES_geral`, `FUNCOES_conjunta_main`, entre outros. Esses arquivos são responsáveis por obter e manipular dados de acordo com a lógica do programa.
+
+- **FICHA_**: Prefixo utilizado para arquivos relacionados à geração e edição de fichas de personagens. Por exemplo, `FICHA_funcoes`, `FICHA_coordenadas`, entre outros. Esses arquivos geralmente são responsáveis por gerar a representação visual das fichas de personagens com base nos dados obtidos pelo programa.
+
+### Variáveis, Mapas e Listas:
+
+Variáveis, mapas e listas que são consideradas constantes ou imutáveis são nomeadas em MAIÚSCULAS.
+```python
+CONSTANTE_EXEMPLO = "valor_constante"
+MAPA_EXEMPLO = {1: "a", 2: "b"}
+LISTA_EXEMPLO = ["item1", "item2", "item3"]
+```
+
+O uso de letras maiúsculas ajuda a identificar rapidamente quais variáveis são consideradas constantes e não serão modificadas durante a execução do programa.
+
+Ao seguir essa nomenclatura e convenção, espero tornar o código mais legível e organizado.
+
+--- 
 
 ## **Como Rodar o Projeto**
 
@@ -80,6 +110,9 @@ Para executar este projeto em sua máquina local, siga os passos abaixo ou o tut
 
    [![Miniatura do Vídeo](https://img.youtube.com/vi/uZCNOTq5j4k/maxresdefault.jpg)](https://www.youtube.com/watch?v=uZCNOTq5j4k)
 
+---  
 ## Licença
 
 Este projeto está sob a Licença Pública Geral GNU Versão 3 - veja o arquivo [LICENSE](LICENSE.md) para detalhes.
+
+--- 
