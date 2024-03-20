@@ -25,42 +25,30 @@ def gerar_raca():
     return raca_aleatoria, raca_info
 
 # Funcao para gerar classe.
-def gerar_classe(raca,racas_info,classes):
-    classe = random.choice(racas_info[raca]["profissoes_tipicas"])
-    return classe
+def gerar_classe(raca):
+    return random.choice(RACAS_INFO[raca]["profissoes_tipicas"])
 
 # Funcao para obter os atributos chaves.
-def obter_atributos_chave(classe, raca, raca_info):
-    atributo_chave_classe = CLASSE_INFO[classe]["atributo_chave"]
-    atributo_chave_raca = raca_info["atributo_chave"]
-    # Verifique se os atributos-chave são iguais e crie a lista de atributos.
-    atributos_chave = []
-    if atributo_chave_classe != atributo_chave_raca:
-        atributos_chave.append(atributo_chave_classe)
-    atributos_chave.append(atributo_chave_raca)
-    return atributos_chave
+def obter_atributos_chave(classe, raca_info):
+    atributo_chave_classe = CLASSE_INFO.get(classe, {}).get("atributo_chave")
+    atributo_chave_raca = raca_info.get("atributo_chave")
+    atributos_chave = {atributo_chave_classe, atributo_chave_raca}
+    return list(atributos_chave)
 
 # Funcao para calcular idade.
 def calcular_idade(raca):
     if raca == "Elfo":
-        idade = random.randint(26, 1000)
-        faixa_etaria = "Adulto"
-        return idade, "Adulto"
-    else:
-        if raca in IDADE_RACAS:
-            intervalos = IDADE_RACAS[raca]
-            faixa_etaria = random.choices(list(intervalos.keys()), k=1)[0]
-            idade_min, idade_max = intervalos[faixa_etaria]
-            print(f"Intervalo de idade encontrado para a raça {raca}.")
+        return random.randint(26, 1000), "Adulto"
 
-            # Verifica se idade_min e idade_max nn sao vazios antes de usar random.randint
-            if idade_min is not None and idade_max is not None:
-                idade = random.randint(idade_min, idade_max)
-                return idade, faixa_etaria
+    intervalos = IDADE_RACAS.get(raca)
+    if intervalos:
+        faixa_etaria = random.choice(list(intervalos.keys()))
+        idade_min, idade_max = intervalos[faixa_etaria]
+        if idade_min is not None and idade_max is not None:
+            return random.randint(idade_min, idade_max), faixa_etaria
 
-        # Se nn encontrou intervalo de idade para a raca, chama a função novamente (recursão)
-        print(f"Intervalo de idade não encontrado para a raça {raca}. Tentando novamente.")
-        return calcular_idade(raca)
+    return calcular_idade(raca)  # Recursão se nenhum intervalo de idade for encontrado
+
 
 # Funcao onde os pontos de atributo sao distribuidos e o valor/nivel dos atributos determinados.
 def escolher_atributos(faixa_etaria, atributos_chave):
@@ -106,35 +94,6 @@ def escolher_atributos(faixa_etaria, atributos_chave):
     atributos_randomizados = {atributo: valor[0] for atributo, valor in atributos_randomizados.items()}
 
     return atributos_randomizados
-
-"""
-# Funcao para escolher atributos de forma balanceada.
-# Uma funcao parecida com a funcao acima, so que essa preza pelo balanceamento puro enquanto a outra preza por um ponto forte.
-def escolher_atributos_Balanceado(faixa_etaria, classe, atributos, CLASSE_INFO):
-    if faixa_etaria == "Jovem":
-        pontos_disponiveis = 15
-    elif faixa_etaria == "Adulto":
-        pontos_disponiveis = 14
-    else:  # Idoso
-        pontos_disponiveis = 13
-
-    atributos_randomizados = copy.deepcopy(atributos)
-
-    # Distribuir pontos igualmente entre os atributos
-    num_atributos = len(atributos_randomizados)
-    pontos_por_atributo = pontos_disponiveis // num_atributos
-    for atributo in atributos_randomizados:
-        atributos_randomizados[atributo][0] = min(atributos_randomizados[atributo][1], pontos_por_atributo)
-
-    # Distribuir pontos restantes, se houver
-    pontos_restantes = pontos_disponiveis % num_atributos
-    atributos_ordenados = list(atributos_randomizados.keys())
-    random.shuffle(atributos_ordenados)
-    for i in range(pontos_restantes):
-        atributo = atributos_ordenados[i]
-        atributos_randomizados[atributo][0] += 1
-    return atributos_randomizados
-"""
 
 # Funcao para distribuir pontos de pericia.
 def distribuir_pontos_pericia(faixa_etaria, classe):
@@ -192,48 +151,38 @@ def randomizar_talentos_gerais(faixa_etaria, classe, nivel, talentos_sem_lvl):
     talentos_escolhidos = {}
 
     # Randomiza se vai ter 1 talento sacrificado ou não
-        # Se um talento eh sacrificado na criacao da ficha, ele tem direito de subir outro talento para o lvl2
     talento_sacrificado = random.choice([True, False])
-    #print(f"Talento sacrificado: {talento_sacrificado}")
 
     if talento_sacrificado:
         talentos_atuais_escolhidos = None
 
-        if faixa_etaria == "Jovem" or faixa_etaria == "Adulto":
-            # Escolhe os talentos com 1 a menos do que o necessário
-            talentos_atuais_escolhidos = random.sample(TALENTOS_GERAIS[classe], quantidade_talentos - 1)
+        # Escolhe os talentos com 1 a menos do que o necessário
+        if quantidade_talentos - 1 > 0:
+            talentos_atuais_escolhidos = random.sample(TALENTOS_GERAIS[classe], min(quantidade_talentos - 1, len(TALENTOS_GERAIS[classe])))
             talentos_sem_lvl.extend(talentos_atuais_escolhidos)
 
-        else: # Idoso
-            # Escolhe qual dos dois talentos vai ser nivel 2
-            talentos_gerais_escolhidos_sem_lvl = list(
-                random.sample(TALENTOS_GERAIS[classe], quantidade_talentos - 1))
+            # Escolhe qual dos dois talentos vai ser nível 2
+            talento_nivel_2 = random.choice(talentos_sem_lvl)
+            talentos_sem_lvl.remove(talento_nivel_2)
 
-            talentos_sem_lvl.extend(talentos_gerais_escolhidos_sem_lvl)
+            # Add o talento nível 2 no dicionário de talentos escolhidos
+            talentos_escolhidos[talento_nivel_2] = {"Nivel": nivel + 1}
 
-        talento_nivel_2 = random.choice(talentos_sem_lvl)
-        talentos_sem_lvl.remove(talento_nivel_2)
+            # Adiciona os talentos de nível 1 ao dicionário de talentos escolhidos
+            for talento in talentos_sem_lvl:
+                talentos_escolhidos[talento] = {"Nivel": nivel}
 
-        # Add o talento nivel 2 no dicionário de talentos escolhidos
-        talentos_escolhidos[talento_nivel_2] = {"Nivel": nivel + 1}
-
-        # Adiciona os talentos de nivel 1 ao dicionário de talentos escolhidos
-        for talento in talentos_sem_lvl:
-            talentos_escolhidos[talento] = {"Nivel": nivel}
-
-        #print(f"Talento geral:", talentos_atuais_escolhidos)
-
-    else:  # Adicionando os talentos de nivel 1 ao dicionário com o nivel especificado
-        talentos_gerais_escolhidos = random.sample(TALENTOS_GERAIS[classe], quantidade_talentos)
-        talentos_sem_lvl.extend(talentos_gerais_escolhidos)
-        for talento in talentos_sem_lvl:
-            talentos_escolhidos[talento] = {"Nivel": nivel}
-
-        #print(f"Talento geral:", talentos_gerais_escolhidos)
+    else:
+        # Adicionando os talentos de nível 1 ao dicionário com o nível especificado
+        if quantidade_talentos > 0:
+            talentos_gerais_escolhidos = random.sample(TALENTOS_GERAIS[classe], min(quantidade_talentos, len(TALENTOS_GERAIS[classe])))
+            talentos_sem_lvl.extend(talentos_gerais_escolhidos)
+            for talento in talentos_sem_lvl:
+                talentos_escolhidos[talento] = {"Nivel": nivel}
 
     return talentos_escolhidos
 
-# Funcao para adicionar os talentos na ficha.
+
 # Funcao central dos talentos. Essa funcao puxa as outras 3 funcoes acima e juntas elas em uma logica para conseguir uma quantidade de talentos balanceados.
 def escolher_talentos(classe, raca, faixa_etaria):
     talentos = []
@@ -338,7 +287,8 @@ talentos_e_niveis = {}
 def dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias):
     global custo
     try:
-        pontos_xp = int(input("Digite a quantidade de pontos de XP que o personagem vai ter: "))
+        pontos_xp = 50
+        #pontos_xp = int(input("Digite a quantidade de pontos de XP que o personagem vai ter: "))
     except ValueError:
         print("Digite um número inteiro válido.")
         return dividir_XP(talentos_escolhidos, pericias_distribuidas, classe, pericias)
