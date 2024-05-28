@@ -1,15 +1,15 @@
-from classes import *
+from DATA_CLASSES import *
 
 '''
-   Modulo com todas informacoes de todas as racas.
+   Modulo com todas informacoes de todas as RACAS.
 '''
 
-# Variavel Lista q contem as racas.
-racas = ["Humano", "Elfo", "Anão", "Goblin", "Orc", "Meio-Elfo", "Halfling", "Lupino"]
+# Variavel Lista q contem as RACAS.
+RACAS = ["Humano", "Elfo", "Anão", "Goblin", "Orc", "Meio-Elfo", "Halfling", "Lupino"]
 
 # Dicionário que armazena informações sobre as raças.
-racas_info = {
-    "Humano": {"atributo_chave": "Empatia", "talento_ascendente": "Adaptive", "profissoes_tipicas": classes},
+RACAS_INFO = {
+    "Humano": {"atributo_chave": "Empatia", "talento_ascendente": "Adaptive", "profissoes_tipicas": CLASSES},
     "Meio-Elfo": {"atributo_chave": "Inteligência", "talento_ascendente": "Poder mental", "profissoes_tipicas": ["Druida", "Mago", "Ladino"]},
     "Anão": {"atributo_chave": "Força", "talento_ascendente": "Bravura Indômita", "profissoes_tipicas": ["Guerreiro", "Mascate", "Bardo"]},
     "Halfling": {"atributo_chave": "Empatia", "talento_ascendente": "Difícil de Acertar", "profissoes_tipicas": ["Bardo", "Mascate", "Ladino"]},
@@ -20,7 +20,7 @@ racas_info = {
 }
 
 # Dicionário com as idades para cada raça.
-idade_racas = {
+IDADE_RACAS = {
     "Humano": {"Jovem": (16, 25), "Adulto": (26, 50), "Idoso": (51, 80)},
     "Meio-Elfo": {"Jovem": (16, 30), "Adulto": (31, 100), "Idoso": (101, 180)},
     "Anão": {"Jovem": (20, 40), "Adulto": (41, 80), "Idoso": (81, 121)},

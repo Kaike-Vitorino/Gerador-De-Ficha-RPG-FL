@@ -1,5 +1,4 @@
-from PIL import Image, ImageDraw, ImageFont
-from FichaCoordenadas import *
+from PIL import ImageDraw, ImageFont
 
 '''
    Modulo onde eu faco as funcoes relacionadas a impressao das informacoes na ficha.
