@@ -49,7 +49,6 @@ def calcular_idade(raca):
 
     return calcular_idade(raca)  # Recursão se nenhum intervalo de idade for encontrado
 
-
 # Funcao onde os pontos de atributo sao distribuidos e o valor/nivel dos atributos determinados.
 def escolher_atributos(faixa_etaria, atributos_chave):
     if faixa_etaria == "Jovem":
@@ -61,6 +60,7 @@ def escolher_atributos(faixa_etaria, atributos_chave):
 
     todos_atributos = ['Força', 'Agilidade', 'Empatia', 'Inteligência']
 
+    # Inicializar os atributos com valores mínimos e máximos possíveis.
     atributos_randomizados = {atributo: [0, 5] for atributo in todos_atributos}
 
     # Distribuir 2 pontos para cada atributo não-chave.
@@ -83,6 +83,7 @@ def escolher_atributos(faixa_etaria, atributos_chave):
 
     for i in range(pontos_restantes):
         atributo = atributos_ordenados[i]
+        # Adicionar ponto extra ate o max de 5
         pontos_a_adicionar = min(5 - atributos_randomizados[atributo][0], 1)
         atributos_randomizados[atributo][0] += pontos_a_adicionar
 
@@ -91,6 +92,7 @@ def escolher_atributos(faixa_etaria, atributos_chave):
         atributo_chave = atributos_chave[0]
         atributos_randomizados[atributo_chave][0] += 1
 
+    # Remover a parte dos valores max, retornando apenas os pontos atuais.
     atributos_randomizados = {atributo: valor[0] for atributo, valor in atributos_randomizados.items()}
 
     return atributos_randomizados
@@ -106,9 +108,11 @@ def distribuir_pontos_pericia(faixa_etaria, classe):
     elif faixa_etaria == "Idoso":
         pontos_disponiveis = 12
 
+    # Obter as perícias permitidas para a classe
     pericias_permitidas = CLASSE_INFO[classe]["PERICIAS"]
     pericias_distribuidas = {pericia: 0 for pericia in pericias_permitidas}
 
+    # Distribuir os pontos aleatoriamente
     while pontos_disponiveis > 0:
         pericia = random.choice(pericias_permitidas)
         if pericias_distribuidas[pericia] < 3 and pontos_disponiveis > 0:
@@ -118,9 +122,13 @@ def distribuir_pontos_pericia(faixa_etaria, classe):
     return pericias_distribuidas
 
 def randomizar_talento_ascendente(raca, talentos_sem_lvl):
+    # Obter o talento ascendente da raça
     talento_ascendente_sem_lvl = RACAS_INFO[raca]["talento_ascendente"]
+
+    # Add o talento ascendente à lista de talentos sem nível
     talentos_sem_lvl.append(talento_ascendente_sem_lvl)
-    #print(f"Talento ascendente:", talentos_sem_lvl)
+
+    # Retornar a lista atualizada de talentos sem nível
     return talentos_sem_lvl
 
 # Funcao para randomizar talento
